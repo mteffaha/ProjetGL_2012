@@ -12,6 +12,7 @@ public class BebeteEmergente extends Bebete {
     public static final float distanceMin = 10f; // En pixels
     
     private float distancePlusProche = Float.MAX_VALUE;
+    private int BEAUCOUP = 2;
 
     public BebeteEmergente(ChampDeBebetes c, int x, int y,
                            float dC, float vC, Color col) {
@@ -21,6 +22,7 @@ public class BebeteEmergente extends Bebete {
         directionCourante = dC;
         vitesseCourante = vC;
         couleur = col;
+        energie = 50;
     }
 
     public void calculeDeplacementAFaire() {
@@ -75,7 +77,17 @@ public class BebeteEmergente extends Bebete {
         if (distancePlusProche >= distanceMin) {
             effectueDeplacement();
         }
+        changeEnergie();
     }
+
+	@Override
+	public void changeEnergie() {
+		List<? extends Dirigeable> betesVues = filtreDirigeables(getChosesVues());
+		if (betesVues.size() < BEAUCOUP) {
+			energie--;
+		}
+		
+	}
 
 
 }

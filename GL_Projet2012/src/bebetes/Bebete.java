@@ -31,6 +31,7 @@ public abstract class Bebete extends PerceptionAble implements Dessinable, Actio
 	protected float directionCourante; // en radians [0 - 2 PI[
 	protected Color couleur; // Couleur de remplissage
 	protected ChampDeBebetes champ; // Le champ
+	protected int energie; //L'energie restant ˆ la bebete
 
 	/* Définition plus précise de l'action de la bébête*/
 	
@@ -39,12 +40,20 @@ public abstract class Bebete extends PerceptionAble implements Dessinable, Actio
 
 	// modifie la position en fonction de vitesse et direction courantes
 	public abstract void effectueDeplacement();
+	
+	// modifie l'energie qu'il reste ˆ la bebetes suivant certains criteres
+	public abstract void changeEnergie();
+	
+	public int getEnergie() {
+		return energie;
+	}
 
 	// Implémentation de Actionnable */
 	
 	public void agit() {
 		calculeDeplacementAFaire();
 		effectueDeplacement();
+		changeEnergie();
 	}
 
 	/* Implémentation de Dessinable */
