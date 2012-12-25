@@ -1,4 +1,0 @@
-Penser à exécuter "cleanall" avant de commit (histoire d'éviter de commit les fichiers compilés / la doc)
-
-Sur Eclipse: clic droit sur build.xml > Run As... > cocher seulement "cleanall" puis Run.
-Sur le Terminal: ant cleanall (en étant dans le répertoire où se trouve le build.xml)
