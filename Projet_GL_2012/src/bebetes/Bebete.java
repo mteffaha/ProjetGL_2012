@@ -11,16 +11,23 @@ package bebetes;
  */
 
 import java.awt.*;
+import java.util.List;
+import java.util.Observable;
+
+import fr.unice.plugin.Plugin;
+
 import simu.Actionnable;
+import util.DistancesEtDirections;
 import visu.Champ;
 import visu.Dessinable;
 import visu.PerceptionAble;
+import visu.Positionnable;
 
 /**
  * @author  collet
  */
-public abstract class Bebete extends PerceptionAble implements Dessinable, Actionnable {
-	// hÈritage en losange pour Dessinable et PerceptionAble (haut du losange = Positionnable)
+public abstract class Bebete extends Observable implements Dessinable, Actionnable, 
+														   PerceptionAble, Plugin {
 
 	static float champDeVue = (float) (Math.PI / 4); // En radians
 	static int longueurDeVue = 20; // nb de pixel pour la longueur du champ de vision
@@ -31,32 +38,24 @@ public abstract class Bebete extends PerceptionAble implements Dessinable, Actio
 	protected float directionCourante; // en radians [0 - 2 PI[
 	protected Color couleur; // Couleur de remplissage
 	protected ChampDeBebetes champ; // Le champ
-	protected int energie; //L'energie restant à la bebete
 
-	/* DÈfinition plus prÈcise de l'action de la bÈbÍte*/
+
+	/* Définition plus précise de l'action de la bebete */
 	
-	// modifie les paramËtres de vitesse et de direction.
+	// modifie les paramètres de vitesse et de direction.
 	public abstract void calculeDeplacementAFaire();
 
 	// modifie la position en fonction de vitesse et direction courantes
 	public abstract void effectueDeplacement();
-	
-	// modifie l'energie qu'il reste à la bebetes suivant certains criteres
-	public abstract void changeEnergie();
-	
-	public int getEnergie() {
-		return energie;
-	}
 
-	// ImplÈmentation de Actionnable */
+	// Implémentation de Actionnable */
 	
 	public void agit() {
 		calculeDeplacementAFaire();
 		effectueDeplacement();
-		changeEnergie();
 	}
 
-	/* ImplÈmentation de Dessinable */
+	/* Implémentation de Dessinable */
 	
 	public Color getCouleur() {
 		return couleur;
@@ -75,7 +74,7 @@ public abstract class Bebete extends PerceptionAble implements Dessinable, Actio
 				- (CDVDegres / 2), CDVDegres);
 	}
 
-	/* ImplÈmentation de Positionnable */
+	/* Implémentation de Positionnable */
 	
 	public int getX() {
 		return x;
@@ -97,7 +96,7 @@ public abstract class Bebete extends PerceptionAble implements Dessinable, Actio
 		return champ; // on retourne un ChampDeBebetes...
 	}
 	
-	/* ImplÈmentation de Dirigeable */
+	/* Implémentation de Dirigeable */
 
 	public float getVitesseCourante() {
 		return vitesseCourante;
@@ -115,7 +114,7 @@ public abstract class Bebete extends PerceptionAble implements Dessinable, Actio
 		this.directionCourante = directionCourante;
 	}
 
-    /* ImplÈmentation de PerceptionAble */
+    /* Implémentation de PerceptionAble */
 
 	public int getLongueurDeVue() {
 		return longueurDeVue;
@@ -123,6 +122,10 @@ public abstract class Bebete extends PerceptionAble implements Dessinable, Actio
 
 	public float getChampDeVue() {
 		return champDeVue;
+	}
+	
+	public List<Positionnable> getChosesVues() { // utilisation de l'utilitaire
+		return DistancesEtDirections.getChosesVues(this);
 	}
 	
 	/* changer la longueur et le champ de vue est "static",
@@ -136,4 +139,10 @@ public abstract class Bebete extends PerceptionAble implements Dessinable, Actio
 		champDeVue = cDV;
 	}
 
+//	 partie propre à la transformation en Plugin
+
+	  public String getName() {
+	    return "bebete";
+	  }
+	
 }
