@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+
 import fr.unice.plugin.ClassPluginLoader;
 import fr.unice.plugin.Plugin;
 
@@ -65,6 +66,7 @@ public class FabriquePlugins extends FabriqueEntites {
 		 */
 		pluginLoader.loadPlugins(Bebete.class);
 		pluginLoader.loadPlugins(Champi.class);
+
 		initConstructors();
 	}
 

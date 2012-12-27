@@ -100,7 +100,7 @@ public class ClassPluginLoader {
   }
 
   /**
-   * Recharge tous les plugins.
+   * Recharge tous les plugins.classe
    * Charge les nouvelles versions des plugins s'il les rencontre.
    */
   public void reloadPlugins() {

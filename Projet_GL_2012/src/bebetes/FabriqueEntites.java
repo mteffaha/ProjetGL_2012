@@ -8,30 +8,30 @@ import java.util.Random;
 /**
  * @author collet
  *
- * Fabrication des entits du simulateur de bbtes
- * - vrification statique (Java 5) 
+ * Fabrication des entitï¿½s du simulateur de bï¿½bï¿½tes
+ * - vï¿½rification statique (Java 5) 
  * @version 1.1
  */
 public abstract class FabriqueEntites {
 
-    // Les constructeurs des classes drives seront privs pour qu'on ne puisse pas crer 
+    // Les constructeurs des classes dï¿½rivï¿½es seront privï¿½s pour qu'on ne puisse pas crï¿½er 
     // directement une usine (pattern singleton)
 
     protected static FabriqueEntites _singleton;
 
     public static void init(Class<? extends FabriqueEntites> myClass) {
-    /* initialisation par utilisation d'un objet classe d'un version concrte de la Fabrique
-       myClass doit reprsenter une classe hritire de FabriqueEntites => vrification statique
-       gr‰ce au type paramtr Class<T> de Java 5 */
+    /* initialisation par utilisation d'un objet classe d'un version concrï¿½te de la Fabrique
+       myClass doit reprï¿½senter une classe hï¿½ritiï¿½re de FabriqueEntites => vï¿½rification statique
+       grï¿½ce au type paramï¿½trï¿½ Class<T> de Java 5 */
 
         if (_singleton != null) {
-            throw new RuntimeException("FabriqueEntites: djˆ cre par l'usine concrte " 
+            throw new RuntimeException("FabriqueEntites: dï¿½jï¿½ crï¿½ï¿½e par l'usine concrï¿½te " 
 				  + _singleton.getClass().getName());
         } else {
             try {
                 _singleton = (FabriqueEntites) myClass.newInstance();
             } catch (Exception ex) {
-                System.err.println("FabriqueEntites: chec de l'instanciation de l'usine concrte " + 
+                System.err.println("FabriqueEntites: ï¿½chec de l'instanciation de l'usine concrï¿½te " + 
 											  myClass.getName());
                 System.exit(1);
             }}}
@@ -39,15 +39,15 @@ public abstract class FabriqueEntites {
     public static FabriqueEntites getFabriqueEntites() {
     	return _singleton;
     }
-    /* renvoie l'usine courante ; l'usine doit avoir t initialise */
+    /* renvoie l'usine courante ; l'usine doit avoir ï¿½tï¿½ initialisï¿½e */
 
     public abstract Bebete creeBebete(ChampDeBebetes c, int x, int y, float dC, float vC, Color col);
 
     public List<Bebete> fabriqueBebetes(ChampDeBebetes c, int nbBebetes) {
-    /* rend une liste de nbBebetes bebetes cres par l'usine courante */
+    /* rend une liste de nbBebetes bebetes crï¿½ï¿½es par l'usine courante */
     		ArrayList<Bebete> nouvBebetes = new ArrayList<Bebete>();
     		Random generateur = new Random();
-    		// unicit des couleurs des bbtes, juste lˆ pour faire joli...
+    		// unicitï¿½ des couleurs des bï¿½bï¿½tes, juste lï¿½ pour faire joli...
     		double racineCubiqueDuNombreDeBebetes = Math
     				.pow((double) nbBebetes, 1.0 / 3.0);
     		float etapeDeCouleur = (float) (1.0 / racineCubiqueDuNombreDeBebetes);
@@ -93,7 +93,7 @@ public abstract class FabriqueEntites {
             return nouvChampis;
     }
 
-    /* Cration supplmentaire dans la fabrique : le champ */
+    /* Crï¿½ation supplï¿½mentaire dans la fabrique : le champ */
     public abstract ChampDeBebetes creeChampDeBebetes(int largeur, int hauteur, int nb);
 	
 }

@@ -44,7 +44,7 @@ public class BebeteEmergente extends Bebete {
     }
 
     /*
-     * pas vraiment de covariance, donc on est obligé de filtrer la liste pour savoir ce qui remue
+     * pas vraiment de covariance, donc on est obligï¿½ de filtrer la liste pour savoir ce qui remue
      * de ce qui est potentiellement fixe... 
      */
     protected static List<? extends Dirigeable> filtreDirigeables(List<? extends Positionnable> lp) {
@@ -69,7 +69,7 @@ public class BebeteEmergente extends Bebete {
         }
     }
 
-    // redéfinition de l'action pour ne pas se déplacer si la bebete est trop proche d'une autre
+    // redï¿½finition de l'action pour ne pas se dï¿½placer si la bebete est trop proche d'une autre
     public void agit() {
         calculeDeplacementAFaire();
         if (distancePlusProche >= distanceMin) {

@@ -5,16 +5,21 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import java.net.MalformedURLException;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+
+import util.PluginMenuSimu;
 import util.PluginMenuItemBuilder;
 import bebetes.ChampDeBebetes;
 import bebetes.FabriqueEntites;
@@ -34,6 +39,7 @@ public class TestPluginsBebetes extends JFrame {
 
   private PluginMenuItemBuilder bebeteMenuBuilder;
   private PluginMenuItemBuilder champiMenuBuilder;
+  private PluginMenuSimu MenuBar;
   private JMenuBar mb = new JMenuBar();
 
   private ChampDeBebetes champ;
@@ -51,11 +57,10 @@ public class TestPluginsBebetes extends JFrame {
 	pluginFactory = (FabriquePlugins)FabriqueEntites.getFabriqueEntites();
     // Construction des menus de plugins
     buildPluginMenus();
-
     // La zone de simulation au centre
-    champ = pluginFactory.creeChampDeBebetes(640,480,50);
+    champ = pluginFactory.creeChampDeBebetes(640,480,new Random().nextInt(50));
     getContentPane().add(champ, BorderLayout.CENTER);
-
+    MenuBar.setChamp(champ); // initialisation de champ pour le menu bar 
     // Les boutons pour charger des nouveaux plugins et recharger les plugins
     JPanel boutons = new JPanel();
     JButton charger = new JButton("Charger des nouveaux plugins");
@@ -74,8 +79,17 @@ public class TestPluginsBebetes extends JFrame {
         buildPluginMenus();
       }
     });
+    // bouton pour tester le paneau de control a enlever plus tard 
     boutons.add(recharger);
-
+    JButton tuer = new JButton("tuer une bebete");
+    tuer.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+    	  champ.getListBebete().get(0).setIsdead(true);
+      }
+    });
+    
+    boutons.add(tuer);
+    
     // un bouton pour relancer la simulation
     JButton restart = new JButton("Red�marrer la simulation");
     restart.addActionListener(new ActionListener() {
@@ -143,8 +157,19 @@ public class TestPluginsBebetes extends JFrame {
     //}
     champiMenuBuilder.buildMenu();
     mb.add(champiMenuBuilder.getMenu());
+    MenuBar = new PluginMenuSimu("Simulation");
+    String sub1[]={"Nouveau","|","Demarre","Stop","|","Exit"};
+    MenuBar.BuildMenuBar(sub1);
+    mb.add(MenuBar.getMenu());
+    
+    MenuBar = new PluginMenuSimu("Affichage");
+    String sub2[]={"Paramétre","|","Panneau de controle"};
+    MenuBar.BuildMenuBar(sub2);
+    mb.add(MenuBar.getMenu());
     setJMenuBar(mb);
   }
+  
+	
 
   /**
    * Le programme principal
