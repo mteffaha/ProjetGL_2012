@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/GL-2012/GL-2012.iml" filepath="$PROJECT_DIR$/GL-2012/GL-2012.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GL_Projet2012/GL_Projet2012.iml" filepath="$PROJECT_DIR$/GL_Projet2012/GL_Projet2012.iml" />
+    </modules>
+  </component>
+</project>
+
