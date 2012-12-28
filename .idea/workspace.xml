@@ -2,26 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee490a9d-6fdb-44e5-aae4-924b232e9855" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/bebetes/GenericFactory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/exceptions/NoBaseClassFound.java" />
-      <change type="MOVED" beforePath="C:\Users\razielone\Desktop\ProjetGL_2012\GL-2012\src\bebetes\LanceBebetes.java" afterPath="$PROJECT_DIR$/GL-2012/src/m1/gl/projet2012/bebetes/LanceBebetes.java" />
-      <change type="MOVED" beforePath="C:\Users\razielone\Desktop\ProjetGL_2012\GL-2012\src\bebetes\configSimu.java" afterPath="$PROJECT_DIR$/GL-2012/src/m1/gl/projet2012/bebetes/configSimu.java" />
-      <change type="MOVED" beforePath="C:\Users\razielone\Desktop\ProjetGL_2012\GL_Projet2012\src\bebetes\Bebete.java" afterPath="$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/bebetes/Bebete.java" />
-      <change type="MOVED" beforePath="C:\Users\razielone\Desktop\ProjetGL_2012\GL_Projet2012\src\bebetes\BebeteEmergente.java" afterPath="$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/bebetes/BebeteEmergente.java" />
-      <change type="MOVED" beforePath="C:\Users\razielone\Desktop\ProjetGL_2012\GL_Projet2012\src\bebetes\BebeteHasard.java" afterPath="$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/bebetes/BebeteHasard.java" />
-      <change type="MOVED" beforePath="C:\Users\razielone\Desktop\ProjetGL_2012\GL_Projet2012\src\bebetes\ChampDeBebetes.java" afterPath="$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/bebetes/ChampDeBebetes.java" />
-      <change type="MOVED" beforePath="C:\Users\razielone\Desktop\ProjetGL_2012\GL_Projet2012\src\bebetes\LanceBebetes.java" afterPath="$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/bebetes/LanceBebetes.java" />
-      <change type="MOVED" beforePath="C:\Users\razielone\Desktop\ProjetGL_2012\GL_Projet2012\src\simu\Actionnable.java" afterPath="$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/simu/Actionnable.java" />
-      <change type="MOVED" beforePath="C:\Users\razielone\Desktop\ProjetGL_2012\GL_Projet2012\src\simu\Simulateur.java" afterPath="$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/simu/Simulateur.java" />
-      <change type="MOVED" beforePath="C:\Users\razielone\Desktop\ProjetGL_2012\GL_Projet2012\src\util\DistancesEtDirections.java" afterPath="$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/util/DistancesEtDirections.java" />
-      <change type="MOVED" beforePath="C:\Users\razielone\Desktop\ProjetGL_2012\GL_Projet2012\src\visu\Champ.java" afterPath="$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/visu/Champ.java" />
-      <change type="MOVED" beforePath="C:\Users\razielone\Desktop\ProjetGL_2012\GL_Projet2012\src\visu\Dessinable.java" afterPath="$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/visu/Dessinable.java" />
-      <change type="MOVED" beforePath="C:\Users\razielone\Desktop\ProjetGL_2012\GL_Projet2012\src\visu\Dirigeable.java" afterPath="$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/visu/Dirigeable.java" />
-      <change type="MOVED" beforePath="C:\Users\razielone\Desktop\ProjetGL_2012\GL_Projet2012\src\visu\PerceptionAble.java" afterPath="$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/visu/PerceptionAble.java" />
-      <change type="MOVED" beforePath="C:\Users\razielone\Desktop\ProjetGL_2012\GL_Projet2012\src\visu\Positionnable.java" afterPath="$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/visu/Positionnable.java" />
-      <change type="MOVED" beforePath="C:\Users\razielone\Desktop\ProjetGL_2012\GL_Projet2012\src\visu\Visualisateur.java" afterPath="$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/visu/Visualisateur.java" />
-      <change type="MOVED" beforePath="C:\Users\razielone\Desktop\ProjetGL_2012\GL_Projet2012\src\visu\VisualisateurAnime.java" afterPath="$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/visu/VisualisateurAnime.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GL_Projet2012/build.properties" afterPath="$PROJECT_DIR$/GL_Projet2012/build.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <ignored path="ProjetGL_2012.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -375,22 +356,38 @@
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="OverrideImplement.combined" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="194" />
     <property name="project.structure.proportion" value="0.15" />
+    <property name="OverrideImplement.combined" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="211" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="215" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/GL_Projet2012/guava-11.0.2.jar!/" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="218" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="890" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="897" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="211" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="204" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
