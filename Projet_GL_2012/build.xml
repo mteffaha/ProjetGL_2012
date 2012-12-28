@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Fichier build.xml -->
+
+<project name="Projet2012" default="compile" basedir=".">
+
+	<property file="build.properties" />
+
+	<target name="init" description="Initialise les répertoires du projet">
+		<mkdir dir="${classes.dir}" />
+		<mkdir dir="${dist.dir}" />
+	</target>
+
+	<target name="compile" depends="init"
+		description="Compile toutes les classes du projet">
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" debug="${debug}" />
+	</target>
+
+	<target name="jar" depends="compile" description="Genere le .jar du projet">
+		<mkdir dir="${dist.dir}/lib" />
+
+		<!-- Mets la classe principale dans le fichier MANIFEST.MF -->
+		<copy file="./MANIFEST.MF" tofile="./META-INF/MANIFEST.MF">
+			<filterset>
+				<filter token="main.class" value="${main.class}" />
+			</filterset>
+		</copy>
+
+		<jar jarfile="${dist.dir}/lib/${project.name}.jar" manifest="./META-INF/MANIFEST.MF"
+			basedir="${classes.dir}" />
+	</target>
+
+	<target name="run" depends="jar" description="Execute le projet">
+		<java jar="${dist.dir}/lib/${project.name}.jar" fork="true" />
+	</target>
+
+	<target name="clean" description="Supprime les fichiers construits">
+		<!-- Supprime les fichiers construits -->
+		<delete dir="${build.dir}" />
+		<delete dir="${dist.dir}" />
+		<delete dir="${api.dir}" />
+	</target>
+
+	<target name="cleanall" depends="clean"
+		description="Supprime davantage de fichiers construits">
+		<delete dir="./META-INF" />
+	</target>
+
+
+	<target name="javadoc" depends="init" description="Genere la javadoc du projet">
+		<javadoc destdir="${api.dir}" use="true">
+			<packageset dir="${src.dir}">
+				<include name="**" />
+			</packageset>
+		</javadoc>
+	</target>
+
+	<target name="installnewplugins" description="Installe de nouveaux plugins">
+		<copy todir="./plugins">
+			<fileset dir="./pluginsDeTest" />
+		</copy>
+	</target>
+</project>
