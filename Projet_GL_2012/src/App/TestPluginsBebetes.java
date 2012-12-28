@@ -1,6 +1,5 @@
 package App;
 
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -15,7 +14,9 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+
 import util.PluginMenuItemBuilder;
+import util.PluginMenuSimu;
 import bebetes.ChampDeBebetes;
 import bebetes.FabriqueEntites;
 import bebetes.FabriquePlugins;
@@ -34,6 +35,7 @@ public class TestPluginsBebetes extends JFrame {
 
   private PluginMenuItemBuilder bebeteMenuBuilder;
   private PluginMenuItemBuilder champiMenuBuilder;
+  private PluginMenuSimu Menu;
   private JMenuBar mb = new JMenuBar();
 
   private ChampDeBebetes champ;
@@ -55,6 +57,8 @@ public class TestPluginsBebetes extends JFrame {
     // La zone de simulation au centre
     champ = pluginFactory.creeChampDeBebetes(640,480,50);
     getContentPane().add(champ, BorderLayout.CENTER);
+    
+    Menu.setChamp(champ);//intialise le champ pour la barre de menu
 
     // Les boutons pour charger des nouveaux plugins et recharger les plugins
     JPanel boutons = new JPanel();
@@ -74,7 +78,17 @@ public class TestPluginsBebetes extends JFrame {
         buildPluginMenus();
       }
     });
+
     boutons.add(recharger);
+    
+    JButton tuer = new JButton("tuer une bebete");
+    tuer.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+    	champ.getListeBebete().get(0).setDead(true);
+      }
+    });
+    
+    boutons.add(tuer);
 
     // un bouton pour relancer la simulation
     JButton restart = new JButton("Red�marrer la simulation");
@@ -143,6 +157,18 @@ public class TestPluginsBebetes extends JFrame {
     //}
     champiMenuBuilder.buildMenu();
     mb.add(champiMenuBuilder.getMenu());
+    Menu = new PluginMenuSimu();
+    Menu.setTitle("Simulation");
+    String sub[]={"Nouveau","|","Demarre","Stop","|","Exit"};
+    Menu.BuildMenuBar(sub);
+    mb.add(Menu.getMenu());
+    
+    Menu = new PluginMenuSimu();
+    Menu.setTitle("Affichage");
+    Menu.setChamp(champ);
+    String sub2[]={"Paramétre","|","Panneau de Controle"};
+    Menu.BuildMenuBar(sub2);
+    mb.add(Menu.getMenu());
     setJMenuBar(mb);
   }
 

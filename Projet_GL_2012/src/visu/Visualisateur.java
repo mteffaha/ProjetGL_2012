@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package visu;
 
 import java.awt.Graphics;
@@ -11,8 +14,8 @@ import javax.swing.JPanel;
 public class Visualisateur extends JPanel implements Champ  {
 	
 	// volatile = gestion des threads
-	// par exemple, largeur et hauteur devraient ï¿½tre volatiles si on les modifiait dynamiquement
-	// leurs valeurs ne pourraient ainsi pas ï¿½tre mis en cache par un thread
+	// par exemple, largeur et hauteur devraient tre volatiles si on les modifiait dynamiquement
+	// leurs valeurs ne pourraient ainsi pas tre mis en cache par un thread
 	
 	protected volatile List<? extends Dessinable> dessinables;
 	protected int largeur;
@@ -32,7 +35,7 @@ public class Visualisateur extends JPanel implements Champ  {
 		this(640,480);
 	}
 	
-	/* Implï¿½mentation de l'interface Champ */
+	/* Implémentation de l'interface Champ */
 	
 	public int getHauteur() {
 		return hauteur;

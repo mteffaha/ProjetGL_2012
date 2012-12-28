@@ -6,7 +6,7 @@ package bebetes;
 
 /**
  *
- * @author  collet  (d'après L. O'Brien, C. Reynolds & B. Eckel)
+ * @author  collet  (d'aprï¿½s L. O'Brien, C. Reynolds & B. Eckel)
  * @version 3.0
  */
 
@@ -38,24 +38,37 @@ public abstract class Bebete extends Observable implements Dessinable, Actionnab
 	protected float directionCourante; // en radians [0 - 2 PI[
 	protected Color couleur; // Couleur de remplissage
 	protected ChampDeBebetes champ; // Le champ
+	protected boolean dead=false;//etat de la bebtete (morte ou vivante)
 
 
-	/* Dfinition plus prcise de l'action de la bebete */
+	/* Dï¿½finition plus prï¿½cise de l'action de la bebete */
 	
-	// modifie les paramtres de vitesse et de direction.
+	public boolean isDead() {
+		return dead;
+	}
+
+	public void setDead(boolean dead) {
+		this.dead = dead;
+		if(dead==true){
+			setChanged();	
+			notifyObservers();
+		}
+	}
+
+	// modifie les paramï¿½tres de vitesse et de direction.
 	public abstract void calculeDeplacementAFaire();
 
 	// modifie la position en fonction de vitesse et direction courantes
 	public abstract void effectueDeplacement();
 
-	// Implmentation de Actionnable */
+	// Implï¿½mentation de Actionnable */
 	
 	public void agit() {
 		calculeDeplacementAFaire();
 		effectueDeplacement();
 	}
 
-	/* Implmentation de Dessinable */
+	/* Implï¿½mentation de Dessinable */
 	
 	public Color getCouleur() {
 		return couleur;
@@ -74,7 +87,7 @@ public abstract class Bebete extends Observable implements Dessinable, Actionnab
 				- (CDVDegres / 2), CDVDegres);
 	}
 
-	/* Implmentation de Positionnable */
+	/* Implï¿½mentation de Positionnable */
 	
 	public int getX() {
 		return x;
@@ -96,7 +109,7 @@ public abstract class Bebete extends Observable implements Dessinable, Actionnab
 		return champ; // on retourne un ChampDeBebetes...
 	}
 	
-	/* Implmentation de Dirigeable */
+	/* Implï¿½mentation de Dirigeable */
 
 	public float getVitesseCourante() {
 		return vitesseCourante;
@@ -114,7 +127,7 @@ public abstract class Bebete extends Observable implements Dessinable, Actionnab
 		this.directionCourante = directionCourante;
 	}
 
-    /* Implmentation de PerceptionAble */
+    /* Implï¿½mentation de PerceptionAble */
 
 	public int getLongueurDeVue() {
 		return longueurDeVue;
@@ -139,7 +152,7 @@ public abstract class Bebete extends Observable implements Dessinable, Actionnab
 		champDeVue = cDV;
 	}
 
-//	 partie propre ˆ la transformation en Plugin
+//	 partie propre ï¿½ la transformation en Plugin
 
 	  public String getName() {
 	    return "bebete";
