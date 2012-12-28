@@ -21,9 +21,8 @@ public class PluginMenuSimu implements ActionListener,MenuSimu {
 	private JMenu menu;
 	private static Logger logger = Logger.getLogger("main.util.PluginMenuSimu");
 
-	public PluginMenuSimu(String t) {
+	public PluginMenuSimu() {
 		menu = new JMenu();
-		this.title = t;
 		menu.setText(title);
 		
 	}
@@ -32,6 +31,10 @@ public class PluginMenuSimu implements ActionListener,MenuSimu {
 	 */
 	public void setChamp(ChampDeBebetes c){
 		champ=c;
+	}
+	
+	public void setTitle(String title){
+		menu.setText(title);
 	}
 	public void BuildMenuBar(String[] subMenu) {
 		// Create the menu bar
