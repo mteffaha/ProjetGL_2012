@@ -14,7 +14,7 @@ import bebetes.ChampDeBebetes;
 import Panel.BebteControl;
 import Panel.configSimu;
 
-public class PluginMenuSimu implements ActionListener,MenuSimu {
+public class PluginMenuSimu implements ActionListener, MenuSimu {
 
 	public static ChampDeBebetes champ;
 	private String title;
@@ -63,7 +63,6 @@ public class PluginMenuSimu implements ActionListener,MenuSimu {
 		return menu;
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		String action = e.getActionCommand();

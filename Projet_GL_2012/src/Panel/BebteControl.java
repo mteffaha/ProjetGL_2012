@@ -58,7 +58,6 @@ public class BebteControl implements Observer {
 		return info;
 	}
 
-	@Override
 	public void update(Observable beb, Object arg1) {
 		// TODO Auto-generated method stub
 		if(beb instanceof Bebete){

@@ -127,7 +127,6 @@ public class configSimu extends JFrame implements ActionListener {
 		return config;
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		String action = e.getActionCommand();
 		if (action.equals("Appliquer")) {
