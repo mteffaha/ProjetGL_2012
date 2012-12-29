@@ -39,6 +39,17 @@ public abstract class Bebete extends Observable implements Dessinable, Actionnab
 	protected Color couleur; // Couleur de remplissage
 	protected ChampDeBebetes champ; // Le champ
 	protected boolean dead=false;//etat de la bebtete (morte ou vivante)
+	protected int energie; //l'energie qu'il reste a la bebete
+	
+	
+	public Bebete(ChampDeBebetes c, int x, int y, float dC, float vC, Color col) {
+        champ = c;
+        this.x = x;
+        this.y = y;
+        directionCourante = dC;
+        vitesseCourante = vC;
+        couleur = col;
+    }
 
 
 	/* D�finition plus pr�cise de l'action de la bebete */
@@ -60,12 +71,20 @@ public abstract class Bebete extends Observable implements Dessinable, Actionnab
 
 	// modifie la position en fonction de vitesse et direction courantes
 	public abstract void effectueDeplacement();
+	
+	// modifie l'energie en fonction du type de la bebete et de son environnement
+	public abstract void changeEnergie();
+
+	public int getEnergie() {
+		return energie;
+	}
 
 	// Impl�mentation de Actionnable */
 	
 	public void agit() {
 		calculeDeplacementAFaire();
 		effectueDeplacement();
+		changeEnergie();
 	}
 
 	/* Impl�mentation de Dessinable */

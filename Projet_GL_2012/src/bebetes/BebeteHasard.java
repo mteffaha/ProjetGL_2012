@@ -1,6 +1,7 @@
 package bebetes;
 
 import java.awt.*;
+import java.util.Random;
 
 /**
  * @author  le collègue
@@ -15,13 +16,9 @@ public class BebeteHasard extends Bebete {
 	protected int nbTour; // nombre de tours de la bébêtes depuis le précédent
 							// changement de direction et de vitesse
 
-	protected BebeteHasard(ChampDeBebetes c, int x, int y, float dC, float vC, Color col) {
-		champ = c;
-		this.x = x;
-		this.y = y;
-		directionCourante = dC;
-		vitesseCourante = vC;
-		couleur = col;
+	public BebeteHasard(ChampDeBebetes c, int x, int y, float dC, float vC, Color col) {
+		super(c, x, y, dC, vC, col);
+        energie = 50;
 		nbTour = 0;
 	}
 
@@ -98,6 +95,17 @@ public class BebeteHasard extends Bebete {
 	 */
 	public void setNbTour(int nbTour) {
 		this.nbTour = nbTour;
+	}
+
+	@Override
+	public void changeEnergie() {
+		Random rand = new Random();
+		if (rand.nextInt(100) < 50) {
+			energie--;
+		}
+		else {
+			energie++;
+		}
 	}
 
 }
