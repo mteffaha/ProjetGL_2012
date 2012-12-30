@@ -54,7 +54,7 @@ public class ChampDeBebetes extends VisualisateurAnime {
 		
 		
 	/* Red�finitions pour synchroniser la gestion des 2 threads */
-	
+
 	public void demarre() {
 		// on d�marre d'abord la simulation
 		simu.demarre();

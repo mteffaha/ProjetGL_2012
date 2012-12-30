@@ -46,6 +46,7 @@ public class PluginMenuSimu implements ActionListener, MenuSimu {
 			if (subMenu[i].equalsIgnoreCase("|")) {
 				menu.addSeparator();
 			} else {
+
 				// a group of JMenuItems
 				menuItem = new JMenuItem(subMenu[i]);
 				menuItem.addActionListener(this);

@@ -13,7 +13,7 @@ package bebetes;
 import java.awt.*;
 import java.util.List;
 import java.util.Observable;
-
+import comportement.*;
 import fr.unice.plugin.Plugin;
 
 import simu.Actionnable;
@@ -40,6 +40,7 @@ public abstract class Bebete extends Observable implements Dessinable, Actionnab
 	protected ChampDeBebetes champ; // Le champ
 	protected boolean dead=false;//etat de la bebtete (morte ou vivante)
 	protected int energie; //l'energie qu'il reste a la bebete
+	protected Deplacement move;
 	
 	
 	public Bebete(ChampDeBebetes c, int x, int y, float dC, float vC, Color col) {
@@ -66,11 +67,11 @@ public abstract class Bebete extends Observable implements Dessinable, Actionnab
 		}
 	}
 
-	// modifie les param�tres de vitesse et de direction.
 	public abstract void calculeDeplacementAFaire();
 
-	// modifie la position en fonction de vitesse et direction courantes
+
 	public abstract void effectueDeplacement();
+	
 	
 	// modifie l'energie en fonction du type de la bebete et de son environnement
 	public abstract void changeEnergie();
@@ -124,7 +125,7 @@ public abstract class Bebete extends Observable implements Dessinable, Actionnab
 		this.y = y;
 	}
 	
-	public Champ getChamp() {
+	public ChampDeBebetes getChamp() {
 		return champ; // on retourne un ChampDeBebetes...
 	}
 	
@@ -167,6 +168,8 @@ public abstract class Bebete extends Observable implements Dessinable, Actionnab
 		longueurDeVue = lDV;
 	}
 	
+
+	
 	public static void setChampDeVue(int cDV) { 
 		champDeVue = cDV;
 	}
@@ -176,5 +179,16 @@ public abstract class Bebete extends Observable implements Dessinable, Actionnab
 	  public String getName() {
 	    return "bebete";
 	  }
+
+
+	public Deplacement getDeplacement() {
+		return move;
+	}
+
+
+	public void setDeplacement(Deplacement move) {
+		this.move = move;
+	}
+
 	
 }
