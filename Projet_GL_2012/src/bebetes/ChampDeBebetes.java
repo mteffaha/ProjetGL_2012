@@ -27,6 +27,16 @@ public class ChampDeBebetes extends VisualisateurAnime {
 	
 	protected FabriqueEntites fabrique; // r�f�rence sur la fabrique
 	
+	protected  boolean BebeteSensible = false;
+	
+	public boolean isBebeteSensible() {
+		return BebeteSensible;
+	}
+
+	public void setBebeteSensible(boolean bebeteSensible) {
+		BebeteSensible = bebeteSensible;
+	}
+
 	protected List<Bebete> lb ;
 	
 	protected ChampDeBebetes(int largeur, int hauteur, int nb) {

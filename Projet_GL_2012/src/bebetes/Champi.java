@@ -5,10 +5,21 @@ import fr.unice.plugin.Plugin;
 
 public abstract class Champi implements Dessinable, Plugin {
 
-	// partie propre ˆ la transformation en Plugin
+	// partie propre ï¿½ la transformation en Plugin
 
+	protected boolean visibilite=true;
+	
 	public String getName() {
 		return "champi";
 	}
+
+	public boolean isVisibile() {
+		return visibilite;
+	}
+
+	public void setVisible(boolean visibilite) {
+		this.visibilite = visibilite;
+	}
+
 
 }

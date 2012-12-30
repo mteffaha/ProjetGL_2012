@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Constructor;
 import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,11 +21,8 @@ import comportement.Deplacement;
 
 import util.PluginMenuItemBuilder;
 import util.PluginMenuSimu;
-import bebetes.Bebete;
-import bebetes.BebeteHasard;
-import bebetes.ChampDeBebetes;
-import bebetes.FabriqueEntites;
-import bebetes.FabriquePlugins;
+import bebetes.*;
+
 
 /**
  * Cette classe impl�mente une interface graphique tr�s simple qui permet de
@@ -130,6 +128,22 @@ public class TestPluginsBebetes extends JFrame {
 	 */
 	private void buildPluginMenus() {
 		mb.removeAll();
+		
+		// Menu statique 
+		
+		Menu = new PluginMenuSimu();
+		Menu.setTitle("Simulation");
+		String sub[] = { "Nouveau", "|", "Demarre", "Stop", "|", "Exit" };
+		Menu.BuildMenuBar(sub);
+		mb.add(Menu.getMenu());
+
+		Menu = new PluginMenuSimu();
+		Menu.setTitle("Affichage");
+		Menu.setChamp(champ);
+		String sub2[] = { "Paramétre", "|", "Panneau de Controle" };
+		Menu.BuildMenuBar(sub2);
+		mb.add(Menu.getMenu());
+		
 		// L'actionListener qui va �couter les entr�es du menu des bebetes
 		ActionListener listener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -164,6 +178,14 @@ public class TestPluginsBebetes extends JFrame {
 				// courant. Le num�ro est contenu dans ActionCommand()
 				pluginFactory.setChampiIdx(Integer.parseInt(((JMenuItem) e
 						.getSource()).getActionCommand()));
+				Champi champi=((ChampDeBebetesAunChampi)champ).getLeChampi();
+				if(champi.isVisibile()){
+					champi.setVisible(false);
+					champ.setBebeteSensible(false);
+				}else{
+					champi.setVisible(true);
+					champ.setBebeteSensible(true);
+				}
 			}
 		};
 		// if (champiMenuBuilder == null) {
@@ -173,18 +195,8 @@ public class TestPluginsBebetes extends JFrame {
 		// }
 		champiMenuBuilder.buildMenu();
 		mb.add(champiMenuBuilder.getMenu());
-		Menu = new PluginMenuSimu();
-		Menu.setTitle("Simulation");
-		String sub[] = { "Nouveau", "|", "Demarre", "Stop", "|", "Exit" };
-		Menu.BuildMenuBar(sub);
-		mb.add(Menu.getMenu());
-
-		Menu = new PluginMenuSimu();
-		Menu.setTitle("Affichage");
-		Menu.setChamp(champ);
-		String sub2[] = { "Paramétre", "|", "Panneau de Controle" };
-		Menu.BuildMenuBar(sub2);
-		mb.add(Menu.getMenu());
+		
+	
 		setJMenuBar(mb);
 	}
 

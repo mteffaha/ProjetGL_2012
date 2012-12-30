@@ -6,19 +6,19 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /**
- * Classe qui met dans un menu des items lies ˆ des plugins donns
+ * Classe qui met dans un menu des items liï¿½es ï¿½ des plugins donnï¿½s
  * @author Philippe Collet
  * @version 1.0
  */
 public class PluginMenuItemBuilder {
 
-  // menu cr par la factory
+  // menu crï¿½ï¿½ par la factory
   private JMenu menu;
 
-  // constructeurs servant a tablir les entres du menu
+  // constructeurs servant a ï¿½tablir les entrï¿½es du menu
   private Constructor[] constructors;
 
-  // L'actionListener qui va couter les entres du menu
+  // L'actionListener qui va ï¿½couter les entrï¿½es du menu
   private ActionListener listener;
 
   private static Logger logger =
@@ -26,9 +26,9 @@ public class PluginMenuItemBuilder {
 
   /**
    * Construit une instance qui concerne un certain menu. Ce menu aura
-   * des choix qui permettront de slectionner un plugin ou un autre.
+   * des choix qui permettront de sï¿½lectionner un plugin ou un autre.
    * @param cs le tableau des constructeurs utilisables
-   * @param listener l'actionListener qui va couter les entres du menu.
+   * @param listener l'actionListener qui va ï¿½couter les entrï¿½es du menu.
    */
   public PluginMenuItemBuilder(Constructor[] cs,
                                ActionListener listener) {
@@ -47,11 +47,11 @@ public class PluginMenuItemBuilder {
    */
   public void buildMenu() {
      logger.info("Construction du menu des PLUGINS");
-    // Enlve les entres prcdentes s'il y en avait
+    // Enlï¿½ve les entrï¿½es prï¿½cï¿½dentes s'il y en avait
     menu.removeAll();
-    // On ajoute une entre par instance de plugin
+    // On ajoute une entrï¿½e par instance de plugin
     for (int i = 0; i < constructors.length; i++) {
-      JMenuItem mi = new JMenuItem(constructors[i].getDeclaringClass().getName());
+      JMenuItem mi = new JMenuItem(constructors[i].getDeclaringClass().getSimpleName());
       // ActionCommand contient la position du constructeur dans le tableau
       mi.setActionCommand(""+i);
       mi.addActionListener(listener);

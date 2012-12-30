@@ -26,14 +26,17 @@ public class configSimu extends JFrame implements ActionListener {
 	private JTextField tnbB;
 	private int hautc;
 	private int largc;
+	private int vsum;
 	private JTextField Largeur;
 	private JTextField Hauteur;
+	private JTextField Vsim;
 
 	public configSimu(ChampDeBebetes c) {
 
 		this.champ = c;
 		hautc=champ.getHauteur();
 		largc=champ.getLargeur();
+		vsum=champ.getDelaiVisuel();
 		pluginFactory = (FabriquePlugins) FabriqueEntites.getFabriqueEntites();
 		frame = new JFrame("Paramétre");
 		JPanel cadre = new JPanel();
@@ -93,11 +96,18 @@ public class configSimu extends JFrame implements ActionListener {
 		
 		JLabel Haut = new JLabel("Hauteur :");
 		Hauteur= new JTextField(3);
-
+		
 		config.add(Haut);
 		config.add(Hauteur);
 		Hauteur.setText(""+hautc);
 		Hauteur.addActionListener(this);
+		
+		JLabel Tsim = new JLabel("Vitesse de simulation (ms) :");
+		Vsim= new JTextField(3);
+		config.add(Tsim);
+		Vsim.setText(""+vsum);
+		config.add(Vsim);
+		Vsim.addActionListener(this);
 		config.setBorder(BorderFactory.createLineBorder(Color.GREEN));
 		return config;
 	}
@@ -147,6 +157,8 @@ public class configSimu extends JFrame implements ActionListener {
 					(((champ.getParent()).getParent()).getParent().getParent()).resize(new Dimension(larg,haut));
 					champ.repaint();
 				}
+				vsum = Integer.parseInt(Vsim.getText());
+				champ.setDelaiSimulation(vsum);
 				frame.dispose();
 			} catch (NumberFormatException e1) {
 				JOptionPane

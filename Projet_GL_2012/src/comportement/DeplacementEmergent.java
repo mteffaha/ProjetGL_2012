@@ -14,6 +14,7 @@ import visu.Dirigeable;
 
 public class DeplacementEmergent implements Deplacement {
 
+	
 	@Override
 	public void calculeDeplacementAFaire(BebeteAvecComportement beb) {
 		//System.out.println("je suis emergeant");

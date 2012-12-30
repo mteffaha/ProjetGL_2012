@@ -3,6 +3,7 @@ package bebetes;
 import java.awt.Color;
 import java.awt.Graphics;
 
+
 import visu.Champ;
 
 public class ChampiRouge extends Champi {
@@ -29,8 +30,10 @@ public class ChampiRouge extends Champi {
 	}
 
 	public void seDessine(Graphics g) {
-        g.setColor(couleur);
-        g.fillOval(x,y,TAILLEGRAPHIQUE,TAILLEGRAPHIQUE);
+		if(visibilite){
+	        g.setColor(couleur);
+	        g.fillOval(x,y,TAILLEGRAPHIQUE,TAILLEGRAPHIQUE);
+		}
 	}
 
 	public Champ getChamp() {
@@ -52,5 +55,7 @@ public class ChampiRouge extends Champi {
 	public void setY(int y) {
 		this.y = y;
 	}
+
+
 
 }

@@ -2,8 +2,12 @@ package bebetes;
 
 import java.awt.Graphics;
 
+import util.DistancesEtDirections;
+
+import com.sun.xml.internal.bind.v2.runtime.reflect.ListIterator;
+
 /*
- * version tendue ultra-basique avec un champi (pour dmonstration)
+ * version ï¿½tendue ultra-basique avec un champi (pour dï¿½monstration)
  */
 public class ChampDeBebetesAunChampi extends ChampDeBebetes {
 
@@ -14,8 +18,8 @@ public class ChampDeBebetesAunChampi extends ChampDeBebetes {
 		regenereChampi();
 	}
 
-	// mthode pour regnrer un champi lorsqu'on relance une simulation (pas trs propre)
-	// il faudra mettre ˆ plat le processus de cration des entités du champ par la suite
+	// mï¿½thode pour regï¿½nï¿½rer un champi lorsqu'on relance une simulation (pas trï¿½s propre)
+	// il faudra mettre ï¿½ plat le processus de crï¿½ation des entitï¿½s du champ par la suite
 	public void regenereChampi() {
 		leChampi = FabriqueEntites.getFabriqueEntites().creeChampi(this, largeur / 2, hauteur / 2);
 	}
@@ -26,9 +30,26 @@ public class ChampDeBebetesAunChampi extends ChampDeBebetes {
 	}
 	
     public void paint(Graphics g) {
-		  // Redfinition de la mthode de ChampDeBebetes pour afficher les champignons
+		  // Redï¿½finition de la mï¿½thode de ChampDeBebetes pour afficher les champignons
       super.paint(g); // s'occupe donc d'afficher les bebetes
       leChampi.seDessine(g);
   }
+    public boolean BebeteSurChampi(Bebete b) {
+        if (DistancesEtDirections.distanceDepuisUnPoint(b.getX(),b.getY(),leChampi.getX(),leChampi.getY())
+                     <= (Champi.TAILLEGRAPHIQUE / 2))
+                return true;
+        
+        return false;
+    }
+
+	public Champi getLeChampi() {
+		return leChampi;
+	}
+
+	public void setLeChampi(Champi leChampi) {
+		this.leChampi = leChampi;
+	}
+
+    
 	
 }

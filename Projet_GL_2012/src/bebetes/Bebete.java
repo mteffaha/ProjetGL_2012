@@ -13,6 +13,9 @@ package bebetes;
 import java.awt.*;
 import java.util.List;
 import java.util.Observable;
+
+import com.sun.xml.internal.bind.v2.runtime.reflect.ListIterator;
+
 import comportement.*;
 import fr.unice.plugin.Plugin;
 
@@ -66,6 +69,7 @@ public abstract class Bebete extends Observable implements Dessinable, Actionnab
 			notifyObservers();
 		}
 	}
+	
 
 	public abstract void calculeDeplacementAFaire();
 
@@ -105,6 +109,14 @@ public abstract class Bebete extends Observable implements Dessinable, Actionnab
 		g.fillArc(x, y, TAILLEGRAPHIQUE, TAILLEGRAPHIQUE, -(int) Math
 				.toDegrees(directionCourante)
 				- (CDVDegres / 2), CDVDegres);
+	}
+	
+	public void calculerDeplacemementSensible(){
+        directionCourante = (float) ((directionCourante +
+                ((Math.random() * Math.PI / 2) -
+                 (Math.PI / 4))) % (Math.PI * 2));
+        if (directionCourante < 0) {
+        	directionCourante += (float) (Math.PI * 2);}
 	}
 
 	/* Impl�mentation de Positionnable */

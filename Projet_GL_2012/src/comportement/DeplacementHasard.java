@@ -6,6 +6,8 @@ import bebetes.BebeteHasard;
 
 public class DeplacementHasard implements Deplacement {
 
+	public static boolean BebeteSensible;
+	
 	@Override
 	public void calculeDeplacementAFaire(BebeteAvecComportement beb) {
 		//System.out.println("je suis hasard");
