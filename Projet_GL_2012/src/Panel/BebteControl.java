@@ -18,10 +18,7 @@ import bebetes.Bebete;
 public class BebteControl implements Observer {
 	
 	private static JFrame frame;
-	private static JTextArea bmortes;
-	protected static BebteControl _singleton=null;
-	
-	 
+	private static JTextArea bmortes;	 
 	public void ShowInfosPanel() {
 		
 		frame = new JFrame("Infos");
@@ -37,16 +34,9 @@ public class BebteControl implements Observer {
 		frame.setLocation(400, 300);
 		frame.setVisible(true);
 		// on met linstance a nuul pour pouvoir creee dautre fenetre si est eté fermé
-		_singleton=null;
+
 	
 	}
-	
-	 public static BebteControl getInstance() {
-		  	if(_singleton==null){
-		  		_singleton= new BebteControl();
-		  	}
-		  	return _singleton;
-		  }
 	
 	
 	public  JPanel Panelinfo(){

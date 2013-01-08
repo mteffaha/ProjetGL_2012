@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- Fichier build.xml -->
 
-<project name="Projet2012" default="compile" basedir=".">
+<project name="Projet2012" default="run" basedir=".">
 
 	<property file="build.properties" />
 
 	<target name="init" description="Initialise les répertoires du projet">
 		<mkdir dir="${classes.dir}" />
 		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${plugins.dir}" />
+		<mkdir dir="${lib.dir}" />
 	</target>
-
-	<target name="compile" depends="init"
-		description="Compile toutes les classes du projet">
-		<javac srcdir="${src.dir}" destdir="${classes.dir}" debug="${debug}" />
+	
+	<path id="class.path">
+        <fileset dir="${lib.dir}">
+           <include name="**/*.jar"/>
+        </fileset>
+    </path>
+    	
+	<target name="initPlugins" description="Installation des plugins">
+		<copy todir="${plugins.dir}">
+			<fileset file="${PulginsBebete.dir}/BebeteEmergente.class" />
+			<fileset file="${PulginsBebete.dir}/BebeteHasard.class" />
+			<fileset file="${PulginsBebete.dir}/ChampiRouge.class" />
+		</copy>
+	</target>
+	
+	<target name="compile" depends="cleanall,init"
+		description="Compile des  classes du projet">
+		
+	    <javac description="Compilation de classes de package simu "
+		     srcdir="${src.dir}" destdir="${classes.dir}" debug="on" fork="true" />
+             
 	</target>
 
 	<target name="jar" depends="compile" description="Genere le .jar du projet">
@@ -29,7 +48,7 @@
 			basedir="${classes.dir}" />
 	</target>
 
-	<target name="run" depends="jar" description="Execute le projet">
+	<target name="run" depends="compile,initPlugins,jar" description="Execute le projet">
 		<java jar="${dist.dir}/lib/${project.name}.jar" fork="true" />
 	</target>
 
@@ -38,6 +57,8 @@
 		<delete dir="${build.dir}" />
 		<delete dir="${dist.dir}" />
 		<delete dir="${api.dir}" />
+		<delete dir="${lib.dir}" />
+		<delete dir="plugins"/>
 	</target>
 
 	<target name="cleanall" depends="clean"

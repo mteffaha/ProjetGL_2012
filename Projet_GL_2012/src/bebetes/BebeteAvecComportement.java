@@ -26,10 +26,10 @@ public abstract class BebeteAvecComportement extends Bebete {
 		// TODO Auto-generated constructor stub
 	}
 
-	public abstract void InitBebete();
+	public abstract void InitBebeteField();
 
 	public void calculeDeplacementAFaire() {
-		InitBebete();
+		InitBebeteField();
 		if (champ.isBebeteSensible()) {
 			if (((ChampDeBebetesAunChampi) this.getChamp())
 					.BebeteSurChampi(this)) {

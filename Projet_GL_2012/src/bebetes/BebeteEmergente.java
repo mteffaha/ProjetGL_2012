@@ -57,7 +57,7 @@ public class BebeteEmergente extends BebeteAvecComportement {
 
 
 	@Override
-	public void InitBebete() {
+	public void InitBebeteField() {
 		// TODO Auto-generated method stub
 		distancePlusProche = Float.MAX_VALUE;
 	}

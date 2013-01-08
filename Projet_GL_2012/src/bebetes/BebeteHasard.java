@@ -35,7 +35,7 @@ public class BebeteHasard extends BebeteAvecComportement {
 
 
 	@Override
-	public void InitBebete() {
+	public void InitBebeteField() {
 		// TODO Auto-generated method stub
 		nbTour = 0;
 	}

@@ -18,12 +18,16 @@ import bebetes.*;
 public class configSimu extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-	private FabriquePlugins pluginFactory;
+	private FabriqueEntites pluginFactory;
 	private ChampDeBebetes champ;
 
 	private JFrame frame;
 	private JLabel nbBebetes;
+	private JLabel LngV;
+	private JLabel ChampVue;
 	private JTextField tnbB;
+	private JTextField tlgv;
+	private JTextField tcv;
 	private int hautc;
 	private int largc;
 	private int vsum;
@@ -127,6 +131,20 @@ public class configSimu extends JFrame implements ActionListener {
 		tnbB = new JTextField(3);
 		tnbB.setText("" + champ.getNombreDeBebetes());
 		config.add(tnbB);
+		
+		LngV = new JLabel("Longeur de vue : ");
+		
+		config.add(LngV);
+		tlgv = new JTextField(3);
+		tlgv.setText(""+champ.getListeBebete().get(0).getLongueurDeVue());
+		config.add(tlgv);
+		
+	    ChampVue= new JLabel("champ de vue : ");
+		
+	    config.add(ChampVue);
+		tcv = new JTextField(3);
+		tcv.setText(""+champ.getListeBebete().get(0).getChampDeVue());
+		config.add(tcv);
 
 		config.setBorder(BorderFactory.createLineBorder(Color.GREEN));
 
@@ -159,6 +177,12 @@ public class configSimu extends JFrame implements ActionListener {
 				}
 				vsum = Integer.parseInt(Vsim.getText());
 				champ.setDelaiSimulation(vsum);
+				
+				int lv=Integer.parseInt(tlgv.getText());
+				float cv=Float.parseFloat(tcv.getText());
+				Bebete.setLongueurDeVue(lv);
+				Bebete.setChampDeVue(cv);
+				
 				frame.dispose();
 			} catch (NumberFormatException e1) {
 				JOptionPane

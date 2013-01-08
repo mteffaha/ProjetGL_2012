@@ -55,8 +55,9 @@ public class TestPluginsBebetes extends JFrame {
 		// la classe de d�marrage !
 		pluginFactory = (FabriquePlugins) FabriqueEntites.getFabriqueEntites();
 		// Construction des menus de plugins
+		buildStaticMenu();
 		buildPluginMenus();
-
+		
 		// La zone de simulation au centre
 		champ = pluginFactory.creeChampDeBebetes(640, 480, 50);
 		getContentPane().add(champ, BorderLayout.CENTER);
@@ -122,15 +123,9 @@ public class TestPluginsBebetes extends JFrame {
 		champ.demarre();
 		setVisible(true);
 	}
+	private void buildStaticMenu() {
 
-	/**
-	 * Construit les entr�es des menus li�es aux plugins.
-	 */
-	private void buildPluginMenus() {
-		mb.removeAll();
-		
-		// Menu statique 
-		
+		// menu inchangée au cours de la simulation 
 		Menu = new PluginMenuSimu();
 		Menu.setTitle("Simulation");
 		String sub[] = { "Nouveau", "|", "Demarre", "Stop", "|", "Exit" };
@@ -144,6 +139,18 @@ public class TestPluginsBebetes extends JFrame {
 		Menu.BuildMenuBar(sub2);
 		mb.add(Menu.getMenu());
 		
+	}
+	
+	
+	/**
+	 * Construit les entr�es des menus li�es aux plugins.
+	 */
+	private void buildPluginMenus() {
+		
+		mb.removeAll();
+		// Menu statique 
+		buildStaticMenu();
+		
 		// L'actionListener qui va �couter les entr�es du menu des bebetes
 		ActionListener listener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -153,15 +160,9 @@ public class TestPluginsBebetes extends JFrame {
 						.getSource()).getActionCommand()));
 				logger.info("set bebete #" + pluginFactory.getBebeteIdx());
 				//on change la strategie de movement selon le type des bebebtes
-				if (pluginFactory.getBebeteIdx() == 0) {
-					for (Bebete bet : champ.getListeBebete()) {
-						bet.setDeplacement(new DeplacementHasard());
-					}
-				}else{
-					for (Bebete bet : champ.getListeBebete()) {
-						bet.setDeplacement(new DeplacementEmergent());
-					}
-				}
+				String ClassName=pluginFactory.getBebeteConstructors()[pluginFactory.getBebeteIdx()]
+						.getDeclaringClass().getSimpleName();
+				ChangeTypeDeplacement(ClassName);
 			}
 		};
 		// if (bebeteMenuBuilder == null) {
@@ -198,6 +199,25 @@ public class TestPluginsBebetes extends JFrame {
 		
 	
 		setJMenuBar(mb);
+	}
+	
+	/**
+	 * 
+	 * @param classname : nom de la classe dont sera examiner pour founir le bon alogorithme a appliquer
+	 * permet d'appliquer de changer le  deplacement d'une bebete selon son type 
+	 * 
+	 */
+	
+	private void ChangeTypeDeplacement(String ClassName){
+		if(ClassName.equals("BebeteHasard")){
+			for (Bebete bet : champ.getListeBebete()) {
+				bet.setDeplacement(new DeplacementHasard());
+			}
+		}else{
+			for (Bebete bet : champ.getListeBebete()) {
+				bet.setDeplacement(new DeplacementEmergent());
+			}
+		}
 	}
 
 	/**

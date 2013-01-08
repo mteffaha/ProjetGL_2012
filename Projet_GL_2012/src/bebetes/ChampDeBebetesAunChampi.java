@@ -4,7 +4,6 @@ import java.awt.Graphics;
 
 import util.DistancesEtDirections;
 
-import com.sun.xml.internal.bind.v2.runtime.reflect.ListIterator;
 
 /*
  * version �tendue ultra-basique avec un champi (pour d�monstration)
