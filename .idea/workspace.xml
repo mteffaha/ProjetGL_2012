@@ -2,20 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee490a9d-6fdb-44e5-aae4-924b232e9855" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProjetGL_2012.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="ee490a9d-6fdb-44e5-aae4-924b232e9855" time="1356655360904" ignored="false" />
+    <file path="/Dummy.txt" changelist="ee490a9d-6fdb-44e5-aae4-924b232e9855" time="1357764003659" ignored="false" />
     <file path="/fragment.java" changelist="ee490a9d-6fdb-44e5-aae4-924b232e9855" time="1356624240587" ignored="false" />
     <file path="$PROJECT_DIR$/../NotPaid/res/values/strings.xml" changelist="ee490a9d-6fdb-44e5-aae4-924b232e9855" time="1356444436632" ignored="false" />
     <file path="$PROJECT_DIR$/../NotPaid/AndroidManifest.xml" changelist="ee490a9d-6fdb-44e5-aae4-924b232e9855" time="1356444437685" ignored="false" />
     <file path="$PROJECT_DIR$/../NotPaid/res/layout/main.xml" changelist="ee490a9d-6fdb-44e5-aae4-924b232e9855" time="1356444437686" ignored="false" />
     <file path="$PROJECT_DIR$/../NotPaid/src/com/example/NotPaid/Home.java" changelist="ee490a9d-6fdb-44e5-aae4-924b232e9855" time="1356444437686" ignored="false" />
     <file path="$PROJECT_DIR$/../NotPaid/build.xml" changelist="ee490a9d-6fdb-44e5-aae4-924b232e9855" time="1356444438257" ignored="false" />
-    <file path="$USER_HOME$/workspace/miniExcel/src/miage/m1/graph/testClass.java" changelist="ee490a9d-6fdb-44e5-aae4-924b232e9855" time="1356621874136" ignored="false" />
+    <file path="$PROJECT_DIR$/../../miniExcel/src/miage/m1/graph/testClass.java" changelist="ee490a9d-6fdb-44e5-aae4-924b232e9855" time="1356621874136" ignored="false" />
     <file path="/testClass.java" changelist="ee490a9d-6fdb-44e5-aae4-924b232e9855" time="1356621829110" ignored="false" />
-    <file path="$USER_HOME$/workspace/miniExcel/PluginTableaur/src/miage/m1/plugins/tableaur/testClass.java" changelist="ee490a9d-6fdb-44e5-aae4-924b232e9855" time="1356621919451" ignored="false" />
+    <file path="$PROJECT_DIR$/../../miniExcel/PluginTableaur/src/miage/m1/plugins/tableaur/testClass.java" changelist="ee490a9d-6fdb-44e5-aae4-924b232e9855" time="1356621919451" ignored="false" />
     <file path="/BebeteEmergente.java" changelist="ee490a9d-6fdb-44e5-aae4-924b232e9855" time="1356702056455" ignored="false" />
     <file path="/BebeteFactory.java" changelist="ee490a9d-6fdb-44e5-aae4-924b232e9855" time="1356705552536" ignored="false" />
     <file path="/BebetesFucker.java" changelist="ee490a9d-6fdb-44e5-aae4-924b232e9855" time="1356696767778" ignored="false" />
@@ -146,7 +146,7 @@
       <file leaf-file-name="GenericFactory.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/bebetes/GenericFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="23" selection-start="2986" selection-end="2986" vertical-scroll-proportion="-5.458234">
+            <state line="76" column="23" selection-start="2986" selection-end="2986" vertical-scroll-proportion="0.02496329">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#7354#7372#0" expanded="true" />
@@ -236,7 +236,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="Scope" currentSubView="All" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -248,8 +248,16 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="Scope">
+        <subPane subId="All">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -284,74 +292,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="GL_Projet2012" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="projet2012" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProjetGL_2012" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GL_Projet2012" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="projet2012" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exceptions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProjetGL_2012" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GL_Projet2012" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="projet2012" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bebetes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProjetGL_2012" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="GL-2012" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -585,21 +532,21 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286908" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32729805" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32729805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32729805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3263889" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25032258" sideWeight="0.67270195" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25032258" sideWeight="0.6736111" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32729805" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32729805" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32729805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -664,18 +611,21 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/visu/PerceptionAble.java">
+    <entry file="file://$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/bebetes/Bebete.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="10" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0">
+        <state line="35" column="80" selection-start="1026" selection-end="1089" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/visu/PerceptionAble.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="10" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GL-2012/src/m1/gl/projet2012/bebetes/LanceBebetes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="295" selection-end="295" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="16" column="0" selection-start="295" selection-end="295" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/bebetes/ChampDeBebetes.java">
@@ -718,16 +668,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/visu/PerceptionAble.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="10" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="2" column="10" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GL-2012/src/m1/gl/projet2012/bebetes/LanceBebetes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="295" selection-end="295" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="16" column="0" selection-start="295" selection-end="295" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/bebetes/ChampDeBebetes.java">
@@ -739,9 +685,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GL_Projet2012/GL_Projet2012.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="66" selection-start="700" selection-end="700" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="14" column="66" selection-start="700" selection-end="700" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/bebetes/BebeteEmergente.java">
@@ -767,7 +711,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GL_Projet2012/src/m1/gl/projet2012/bebetes/GenericFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="23" selection-start="2986" selection-end="2986" vertical-scroll-proportion="-5.458234">
+        <state line="76" column="23" selection-start="2986" selection-end="2986" vertical-scroll-proportion="0.02496329">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#7354#7372#0" expanded="true" />
@@ -856,6 +800,17 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.3472222" />
               </list>
             </option>
           </splitter-proportions>
