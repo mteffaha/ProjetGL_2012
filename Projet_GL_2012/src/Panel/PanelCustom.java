@@ -15,6 +15,7 @@ public class PanelCustom {
 	private String nom;
 
 	public void showPanel() {
+		//panneau por rajouter des informations
 		frame = new JFrame(nom);
 		JPanel cadre = new JPanel();
 		cadre.setLayout(new BorderLayout());
