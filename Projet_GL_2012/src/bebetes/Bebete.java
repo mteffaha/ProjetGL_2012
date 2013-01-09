@@ -1,7 +1,8 @@
 package bebetes;
 
 /*
- * Bebete.java
+ *                  Bebete.java
+ *
  */
 
 /**
