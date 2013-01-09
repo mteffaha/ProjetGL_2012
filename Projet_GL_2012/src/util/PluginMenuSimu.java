@@ -96,7 +96,7 @@ public class PluginMenuSimu implements ActionListener, MenuSimu {
 								public void run() {
 
 									UIManager.put("swing.boldMetal", Boolean.FALSE);
-									new BebteControl().ShowInfosPanel();
+									BebteControl.getInstance().getPanel().showPanel();
 								}
 							});
 							

@@ -21,6 +21,7 @@ import comportement.Deplacement;
 
 import util.PluginMenuItemBuilder;
 import util.PluginMenuSimu;
+import Panel.BebteControl;
 import bebetes.*;
 
 
@@ -228,5 +229,6 @@ public class TestPluginsBebetes extends JFrame {
 		Logger.getLogger("fr.unice.plugin").setLevel(Level.WARNING);
 		Logger.getLogger("bebetes").setLevel(Level.WARNING);
 		new TestPluginsBebetes();
+		
 	}
 }

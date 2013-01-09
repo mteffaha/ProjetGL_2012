@@ -57,9 +57,8 @@ public class ChampDeBebetes extends VisualisateurAnime {
 		// initialisation des Dessinables...
 		setDessinables(lb);
 		//intitalise les observeurs 
-		BebteControl bc = new BebteControl();
 		for(Bebete bet : lb){
-			bet.addObserver(bc);
+			bet.addObserver(BebteControl.getInstance());
 		}
 	}
 		
