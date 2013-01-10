@@ -27,7 +27,7 @@ public class ChampDeBebetes extends VisualisateurAnime {
 	
 	protected FabriqueEntites fabrique; // r�f�rence sur la fabrique
 	
-	protected  boolean BebeteSensible = false;
+	protected  boolean BebeteSensible = true;
 	
 	public boolean isBebeteSensible() {
 		return BebeteSensible;

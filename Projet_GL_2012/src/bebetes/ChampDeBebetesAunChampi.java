@@ -35,7 +35,7 @@ public class ChampDeBebetesAunChampi extends ChampDeBebetes {
   }
     public boolean BebeteSurChampi(Bebete b) {
         if (DistancesEtDirections.distanceDepuisUnPoint(b.getX(),b.getY(),leChampi.getX(),leChampi.getY())
-                     <= (Champi.TAILLEGRAPHIQUE / 2))
+                     <= (Champi.TAILLEGRAPHIQUE))
                 return true;
         
         return false;
