@@ -34,7 +34,7 @@
              
 	</target>
 
-	<target name="jar" depends="compile" description="Genere le .jar du projet">
+	<target name="jar" depends="compile,initPlugins" description="Genere le .jar du projet">
 		<mkdir dir="${dist.dir}/lib" />
 
 		<!-- Mets la classe principale dans le fichier MANIFEST.MF -->
