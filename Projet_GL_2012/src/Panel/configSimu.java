@@ -22,18 +22,17 @@ public class configSimu extends JFrame implements ActionListener {
 	private ChampDeBebetes champ;
 
 	private JFrame frame;
-	private JLabel nbBebetes;
-	private JLabel LngV;
-	private JLabel ChampVue;
 	private JTextField tnbB;
 	private JTextField tlgv;
 	private JTextField tcv;
 	private int hautc;
 	private int largc;
 	private int vsum;
+	private int ray;
 	private JTextField Largeur;
 	private JTextField Hauteur;
 	private JTextField Vsim;
+	private JTextField trayon;
 
 	public configSimu(ChampDeBebetes c) {
 
@@ -41,6 +40,7 @@ public class configSimu extends JFrame implements ActionListener {
 		hautc=champ.getHauteur();
 		largc=champ.getLargeur();
 		vsum=champ.getDelaiVisuel();
+		ray=ChampiRouge.diametre;
 		pluginFactory = (FabriquePlugins) FabriqueEntites.getFabriqueEntites();
 		frame = new JFrame("Paramétre");
 		JPanel cadre = new JPanel();
@@ -69,7 +69,7 @@ public class configSimu extends JFrame implements ActionListener {
 	public JTabbedPane Onglets() {
 
 		JTabbedPane tabbedPane = new JTabbedPane();
-		tabbedPane.setPreferredSize(new Dimension(300,200));
+		tabbedPane.setPreferredSize(new Dimension(400,200));
 		ImageIcon icon = null;
 		int i = 0;
 		// premier onglet pour les paramétre generales
@@ -81,10 +81,32 @@ public class configSimu extends JFrame implements ActionListener {
 		JComponent hasard = PanelConfigChamp();
 		tabbedPane.addTab("Champ bebete", icon, hasard, "parametre de champ des bebetes");
 		tabbedPane.setMnemonicAt(i++, KeyEvent.VK_2);
+		
+		if(champ.isBebeteSensible()){
+			JComponent champi = PanelConfigChampi();
+			tabbedPane.addTab("Champ bebete", icon, champi, "parametre de champ des bebetes");
+			tabbedPane.setMnemonicAt(i++, KeyEvent.VK_3);
+
+		}
 
 		return tabbedPane;
 
 	}
+	
+	private JComponent PanelConfigChampi() {
+		JComponent config = new JPanel();
+		config.setLayout(new GridLayout(8, 2));
+		JLabel rayon = new JLabel("rayon : ");
+		trayon= new JTextField(3);
+		config.add(rayon);
+		trayon.setText(""+ray);
+		config.add(trayon);
+		trayon.addActionListener(this);
+		config.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+		return config;
+	}
+
+
 
 	// creation de panneau de confiquration des bebetes Emergentes
 	private JComponent PanelConfigChamp() {
@@ -125,21 +147,21 @@ public class configSimu extends JFrame implements ActionListener {
 		Border bord = BorderFactory.createRaisedBevelBorder();
 		config.setBorder(bord);
 
-		nbBebetes = new JLabel("nombre de bebetes : ");
+		JLabel nbBebetes = new JLabel("nombre de bebetes : ");
 
 		config.add(nbBebetes);
 		tnbB = new JTextField(3);
 		tnbB.setText("" + champ.getNombreDeBebetes());
 		config.add(tnbB);
 		
-		LngV = new JLabel("Longeur de vue : ");
+	   JLabel LngV= new JLabel("Longeur de vue : ");
 		
 		config.add(LngV);
 		tlgv = new JTextField(3);
 		tlgv.setText(""+champ.getListeBebete().get(0).getLongueurDeVue());
 		config.add(tlgv);
 		
-	    ChampVue= new JLabel("champ de vue : ");
+		JLabel ChampVue= new JLabel("champ de vue : ");
 		
 	    config.add(ChampVue);
 		tcv = new JTextField(3);
@@ -175,6 +197,8 @@ public class configSimu extends JFrame implements ActionListener {
 					(((champ.getParent()).getParent()).getParent().getParent()).resize(new Dimension(larg,haut));
 					champ.repaint();
 				}
+				ray=Integer.parseInt(trayon.getText());
+				ChampiRouge.diametre=ray;
 				vsum = Integer.parseInt(Vsim.getText());
 				champ.setDelaiSimulation(vsum);
 				

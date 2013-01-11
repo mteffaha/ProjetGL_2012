@@ -2,6 +2,9 @@ package bebetes;
 
 import java.awt.Color;
 
+import Panel.BebteControl;
+import Panel.PanelCustom;
+
 import comportement.Deplacement;
 
 
@@ -34,6 +37,10 @@ public abstract class BebeteAvecComportement extends Bebete {
 			if (((ChampDeBebetesAunChampi) this.getChamp())
 					.BebeteSurChampi(this)) {
 				calculerDeplacemementSensible();
+				//on recupere le bon onglet d'affichage 
+				BebteControl.getInstance().getPanel().setOnglet(1);
+				setChanged();
+				notifyObservers();
 			}else{
 				move.calculeDeplacementAFaire(this);
 			}

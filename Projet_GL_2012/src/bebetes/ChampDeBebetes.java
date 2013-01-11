@@ -29,13 +29,7 @@ public class ChampDeBebetes extends VisualisateurAnime {
 	
 	protected  boolean BebeteSensible = true;
 	
-	public boolean isBebeteSensible() {
-		return BebeteSensible;
-	}
 
-	public void setBebeteSensible(boolean bebeteSensible) {
-		BebeteSensible = bebeteSensible;
-	}
 
 	protected List<Bebete> lb ;
 	
@@ -112,6 +106,13 @@ public class ChampDeBebetes extends VisualisateurAnime {
 	
 	public void setDelaiSimulation(int delaiSimu) { // D�l�gation : pattern Adapter
 		simu.setDelaiSimulation(delaiSimu);
+	}
+	public boolean isBebeteSensible() {
+		return BebeteSensible;
+	}
+
+	public void setBebeteSensible(boolean bebeteSensible) {
+		BebeteSensible = bebeteSensible;
 	}
 
 }

@@ -12,6 +12,7 @@ public class ChampDeBebetesAunChampi extends ChampDeBebetes {
 
 	protected Champi leChampi;
 	
+	
 	protected ChampDeBebetesAunChampi(int largeur, int hauteur, int nb) {
 		super(largeur,hauteur,nb);
 		regenereChampi();
@@ -35,7 +36,7 @@ public class ChampDeBebetesAunChampi extends ChampDeBebetes {
   }
     public boolean BebeteSurChampi(Bebete b) {
         if (DistancesEtDirections.distanceDepuisUnPoint(b.getX(),b.getY(),leChampi.getX(),leChampi.getY())
-                     <= (Champi.TAILLEGRAPHIQUE))
+                     <= ChampiRouge.diametre)
                 return true;
         
         return false;
@@ -48,6 +49,7 @@ public class ChampDeBebetesAunChampi extends ChampDeBebetes {
 	public void setLeChampi(Champi leChampi) {
 		this.leChampi = leChampi;
 	}
+
 
     
 	
