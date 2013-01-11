@@ -11,13 +11,13 @@
 		<mkdir dir="${plugins.dir}" />
 		<mkdir dir="${lib.dir}" />
 	</target>
-	
+
 	<path id="class.path">
-        <fileset dir="${lib.dir}">
-           <include name="**/*.jar"/>
-        </fileset>
-    </path>
-    	
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
 	<target name="initPlugins" description="Installation des plugins">
 		<copy todir="${plugins.dir}">
 			<fileset file="${PulginsBebete.dir}/BebeteEmergente.class" />
@@ -25,17 +25,15 @@
 			<fileset file="${PulginsBebete.dir}/ChampiRouge.class" />
 		</copy>
 	</target>
-	
-	<target name="compile" depends="cleanall,init"
-		description="Compile des  classes du projet">
-		
-	    <javac description="Compilation de classes de package simu "
-		     srcdir="${src.dir}" destdir="${classes.dir}" debug="on" fork="true" />
-             
+
+	<target name="compile" depends="cleanall,init" description="Compile des  classes du projet">
+
+		<javac description="Compilation de classes de package simu "
+			srcdir="${src.dir}" destdir="${classes.dir}" debug="on" fork="true" />
+
 	</target>
 
 	<target name="jar" depends="compile,initPlugins" description="Genere le .jar du projet">
-		<mkdir dir="${dist.dir}/lib" />
 
 		<!-- Mets la classe principale dans le fichier MANIFEST.MF -->
 		<copy file="./MANIFEST.MF" tofile="./META-INF/MANIFEST.MF">
@@ -44,11 +42,12 @@
 			</filterset>
 		</copy>
 
-		<jar jarfile="${dist.dir}/lib/${project.name}.jar" manifest="./META-INF/MANIFEST.MF"
+		<jar jarfile="${lib.dir}/${project.name}.jar" manifest="./META-INF/MANIFEST.MF"
 			basedir="${classes.dir}" />
 	</target>
 
-	<target name="run" depends="compile,initPlugins,jar" description="Execute le projet">
+	<target name="run" depends="compile,initPlugins,jar"
+		description="Execute le projet">
 		<java jar="${dist.dir}/lib/${project.name}.jar" fork="true" />
 	</target>
 
@@ -58,7 +57,7 @@
 		<delete dir="${dist.dir}" />
 		<delete dir="${api.dir}" />
 		<delete dir="${lib.dir}" />
-		<delete dir="plugins"/>
+		<delete dir="plugins" />
 	</target>
 
 	<target name="cleanall" depends="clean"
@@ -80,4 +79,25 @@
 			<fileset dir="./pluginsDeTest" />
 		</copy>
 	</target>
+
+	<target name="test" description="Lance les tests">
+		<mkdir dir="${tests.api}" />
+		<copy todir="${tests.api}">
+			<fileset dir="${build.dir}">
+				<include name="**/*Test.class" />
+			</fileset>
+		</copy>
+		
+		<junit printsummary="yes" haltonfailure="yes">
+
+			<formatter type="xml" />
+
+			<batchtest fork="yes" todir="${report.dir}">
+				<fileset dir="${src.dir}">
+					<include name="**/*Test*.java" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+	
 </project>
