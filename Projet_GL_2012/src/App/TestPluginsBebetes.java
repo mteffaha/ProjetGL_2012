@@ -139,7 +139,6 @@ public class TestPluginsBebetes extends JFrame {
 		Menu.setChamp(champ);
 		String sub2[] = { "Paramétre", "|", "Panneau de Controle" };
 		Menu.BuildMenuBar(sub2);
-		
 		mb.add(Menu.getMenu());
 		Menu = new PluginMenuSimu();
 		Menu.setTitle("Test");
