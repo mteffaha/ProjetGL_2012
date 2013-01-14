@@ -209,6 +209,7 @@ public abstract class BebeteAvecComportement extends Observable implements Dessi
 					.BebeteSurChampi(this)) {
 				calculerDeplacemementSensible();
                 notify = true;
+                System.out.println("Notify CalculeDeplacementAFaire");
 			}else{
 				move.calculeDeplacementAFaire(this);
 			}
@@ -257,6 +258,10 @@ public abstract class BebeteAvecComportement extends Observable implements Dessi
 
     public void setPendingState(Class<? extends BebeteAvecComportement> newPendingState){
         this.pendingState = newPendingState;
+
     }
+
+
+
 
 }

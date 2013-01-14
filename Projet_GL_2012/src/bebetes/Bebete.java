@@ -15,6 +15,7 @@ import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Observable;
+import java.util.Observer;
 import java.util.Random;
 
 import Panel.BebteControl;
@@ -34,7 +35,7 @@ import visu.Positionnable;
  * @author collet
  */
 public class Bebete extends Observable implements Dessinable,
-        Actionnable, PerceptionAble, Plugin {
+        Actionnable, PerceptionAble, Plugin ,Observer{
 
     // il y a 1 chance sur CHANSE_HASARD pour que la bebete soit hasard sinon elle sera Emergente
     private static int CHANCE_HASARD = 20;
@@ -235,5 +236,9 @@ public class Bebete extends Observable implements Dessinable,
     }
 
 
-
+    @Override
+    public void update(Observable o, Object arg) {
+        setChanged();
+        notifyObservers();
+    }
 }
