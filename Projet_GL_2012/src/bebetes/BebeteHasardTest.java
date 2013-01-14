@@ -1,12 +1,18 @@
 package bebetes;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
+
+import bebetes.Bebete;
+import bebetes.BebeteHasard;
+import bebetes.ChampDeBebetes;
+import bebetes.FabriqueEntites;
+import bebetes.FabriquePlugins;
 
 public class BebeteHasardTest {
 
@@ -15,12 +21,17 @@ public class BebeteHasardTest {
 
 	protected FabriqueEntites fabrique; // r�f�rence sur la fabrique
 	protected List<Bebete> lb ;
+	private int count = 0;
 	
+	
+	@BeforeClass
+	public static void setUpClass() throws Exception {
+		FabriqueEntites.init(FabriquePlugins.class);
+	}
 	
 	@Before
 	public void setUp() throws Exception {
 		fabrique = FabriqueEntites.getFabriqueEntites();
-		fabrique.init(FabriquePlugins.class);
 		champ = fabrique.creeChampDeBebetes(640, 480, 1);
 		lb = fabrique.fabriqueBebetes(champ,1);
 		bebeteHasard = (BebeteHasard) lb.get(0);

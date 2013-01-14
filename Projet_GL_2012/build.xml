@@ -23,6 +23,7 @@
 				<include name="Bebete*.class" />
 				<exclude name="BebeteAvecComportement.class" />
 				<exclude name="Bebete.class" />
+				<exclude name="*Test.class" />
 			</fileset>
 			<fileset file="${PulginsBebete.dir}/ChampiRouge.class" />
 		</copy>
@@ -93,7 +94,7 @@
 	</target>
 
 
-	<target name="test" depends="compile" description="Lance les tests">
+	<target name="test" depends="compile,initPlugins" description="Lance les tests">
 		<mkdir dir="${tests.dir}" />
 		<copy todir="${tests.dir}">
 			<fileset dir="${classes.dir}">
