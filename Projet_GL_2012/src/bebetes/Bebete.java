@@ -88,6 +88,7 @@ public class Bebete extends Observable implements Dessinable,
                         .getConstructors()[0].newInstance(currentState.getChamp(),currentState.getX(),currentState.getY()
                                                            ,currentState.getDirectionCourante(),currentState.getVitesseCourante(),currentState.getCouleur());
                 currentState.setEnergie(energy);
+                currentState.setPendingState(null);
 
             } catch (InstantiationException e) {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
