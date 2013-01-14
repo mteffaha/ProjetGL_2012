@@ -20,8 +20,11 @@
     	
 	<target name="initPlugins" description="Installation des plugins">
 		<copy todir="${plugins.dir}">
-			<fileset file="${PulginsBebete.dir}/BebeteEmergente.class" />
-			<fileset file="${PulginsBebete.dir}/BebeteHasard.class" />
+			<fileset  dir="${PulginsBebete.dir}" >
+                <include name="Bebete*.class"/>
+                <exclude name="BebeteAvecComportement.class"/>
+                <exclude name="Bebete.class"/>
+            </fileset>
 			<fileset file="${PulginsBebete.dir}/ChampiRouge.class" />
 		</copy>
 	</target>
@@ -30,7 +33,7 @@
 		description="Compile des  classes du projet">
 		
 	    <javac description="Compilation de classes de package simu "
-		     srcdir="${src.dir}" destdir="${classes.dir}" debug="on" fork="true" />
+		     srcdir="${src.dir}" destdir="${classes.dir}" debug="on" fork="true" encoding="ISO-8859-1" />
              
 	</target>
 
@@ -56,7 +59,7 @@
 		<!-- Supprime les fichiers construits -->
 		<delete dir="${build.dir}" />
 		<delete dir="${dist.dir}" />
-		<delete dir="${api.dir}" />
+		<delete dir="${doc.dir}" />
 		<delete dir="${lib.dir}" />
 		<delete dir="plugins"/>
 	</target>
@@ -68,7 +71,7 @@
 
 
 	<target name="javadoc" depends="init" description="Genere la javadoc du projet">
-		<javadoc destdir="${api.dir}" use="true">
+		<javadoc destdir="${doc.dir}" use="true">
 			<packageset dir="${src.dir}">
 				<include name="**" />
 			</packageset>

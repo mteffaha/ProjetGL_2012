@@ -40,5 +40,17 @@ public class BebeteHasard extends BebeteAvecComportement {
 		nbTour = 0;
 	}
 
+    @Override
+    public void seDessine(Graphics g) {
+        // a refaire
+        int CDVDegres = (int) Math.toDegrees(champDeVue);
+        g.setColor(new Color(255,0,0,0.2f));
+        g.fillOval(x,y,TAILLEGRAPHIQUE,TAILLEGRAPHIQUE);
+        g.setColor(couleur);
+        g.fillArc(x, y, TAILLEGRAPHIQUE, TAILLEGRAPHIQUE,
+                -(int) Math.toDegrees(directionCourante) - (CDVDegres / 2),
+                CDVDegres);
+    }
+
 
 }
