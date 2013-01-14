@@ -34,7 +34,7 @@ public class BebeteHasardTest {
 		fabrique = FabriqueEntites.getFabriqueEntites();
 		champ = fabrique.creeChampDeBebetes(640, 480, 1);
 		lb = fabrique.fabriqueBebetes(champ,1);
-		bebeteHasard = (BebeteHasard) lb.get(0);
+		bebeteHasard = (BebeteHasard) lb.get(0).getCurrentState();
 	}
 
 

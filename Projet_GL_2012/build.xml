@@ -35,7 +35,7 @@
 
 		<javac description="Compilation de classes de package simu "
 			srcdir="${src.dir}" destdir="${classes.dir}" debug="on" fork="true"
-			classpathref="class.path" encoding="ISO-8859-1" />
+			classpathref="class.path" encoding="ISO-8859-1" includeantruntime="false" />
 
 	</target>
 

@@ -23,14 +23,15 @@ public class BebetePredator extends BebeteAvecComportement {
     private Bebete target;  // la bebete cible du prédateur
     private boolean isLazy; // définit si la bébete est paresseuse (vas essaye de suivre les bebete les moin rapide)
     // ou pas (vas éssayer de poursuivre les bebete qui ont le plus d'énergie)
-    private Class<? extends Bebete> nextPendingState; // l'état vers lequelle la bebete vas se transformer une foix
-    private Class<? extends Bebete> pendingState;
-    // elle a récuperer l'enérgie de la cible
+
+    private Class<? extends BebeteAvecComportement> nextPendingState;   // l'état vers lequelle la bebete vas se transformer une foix
+                                                                        // elle a récuperer l'enérgie de la cible
+
 
 
     public BebetePredator(ChampDeBebetes c, int x, int y, float dC, float vC, Color col) {
         super(c, x, y, dC, vC, col);
-        Logger.getLogger("fr.unice.plugin.PluginFactory") .log(Level.SEVERE,"Bebete Predatrive creer");
+        Logger.getLogger("fr.unice.plugin.PluginFactory") .log(Level.SEVERE, "Bebete Predatrive creer");
         energie = BebetePredator.STARTER_ENERGY;
         setDeplacement(new DeplacementPredator());
         target = null;
@@ -49,7 +50,7 @@ public class BebetePredator extends BebeteAvecComportement {
      *
      * @param ancienneBebete , lz bebete dont on vas copie les attribue
      */
-    public BebetePredator(Bebete ancienneBebete) {
+    public BebetePredator(BebeteAvecComportement ancienneBebete) {
         super(ancienneBebete.getChamp(), ancienneBebete.getX(),
                 ancienneBebete.getY(), ancienneBebete.getDirectionCourante(),
                 ancienneBebete.getVitesseCourante(), ancienneBebete.getCouleur());
@@ -120,50 +121,51 @@ public class BebetePredator extends BebeteAvecComportement {
     public void seDessine(Graphics g) {
         // a refaire
         int CDVDegres = (int) Math.toDegrees(champDeVue);
-        g.setColor(new Color(0,0,0));
-
+        g.setColor(new Color(255,0,0,0.2f));
+        g.fillOval(x,y,TAILLEGRAPHIQUE,TAILLEGRAPHIQUE);
+        g.setColor(couleur);
         g.fillArc(x, y, TAILLEGRAPHIQUE, TAILLEGRAPHIQUE,
                 -(int) Math.toDegrees(directionCourante) - (CDVDegres / 2),
                 CDVDegres);
     }
 
-    public void setPendingState(Class<? extends Bebete> pendingState) {
-        this.pendingState = pendingState;
+
+
+
+    private enum KnownBebete{
+        BebeteEmergent,
+        BebeteHasard
     }
+    class Square {
+        private int x, y;
+        private int width;
 
-    public Class<? extends Bebete> getPendingState() {
-        return pendingState;
-    }
-}
-
-class Square {
-    private int x, y;
-    private int width;
-
-    Square(int x, int y, int width) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-    }
-
-    /**
-     * test si une interesction entre ce carre et un autre passée en parametre existe
-     *
-     * @param other l'autre carrer avec lequelle on doit tester
-     * @return vrai si une intersection existe , faux sinon
-     */
-    boolean isCollidingWith(Square other) {
-        // on suppose qu'il y a un BoundingBox en forme de cercle qui entoure les carre
-        int x1 = this.x + (this.width / 2), x2 = other.x + (other.width / 2);
-        int y1 = this.y + (this.width / 2), y2 = other.y + (other.width / 2);
-        Double distanceBetweenCenters = Math.sqrt(Math.pow(Math.abs(x1 - x2), 2)
-                + Math.pow(Math.abs(y1 - y2), 2));
-        if (distanceBetweenCenters < (2 * this.width)) {    // il y a une intersection
-            return true;
+        Square(int x, int y, int width) {
+            this.x = x;
+            this.y = y;
+            this.width = width;
         }
 
-        return false;
+        /**
+         * test si une interesction entre ce carre et un autre passée en parametre existe
+         *
+         * @param other l'autre carrer avec lequelle on doit tester
+         * @return vrai si une intersection existe , faux sinon
+         */
+        boolean isCollidingWith(Square other) {
+            // on suppose qu'il y a un BoundingBox en forme de cercle qui entoure les carre
+            int x1 = this.x + (this.width / 2), x2 = other.x + (other.width / 2);
+            int y1 = this.y + (this.width / 2), y2 = other.y + (other.width / 2);
+            Double distanceBetweenCenters = Math.sqrt(Math.pow(Math.abs(x1 - x2), 2)
+                    + Math.pow(Math.abs(y1 - y2), 2));
+            if (distanceBetweenCenters < (2 * this.width)) {    // il y a une intersection
+                return true;
+            }
+
+            return false;
+        }
+
     }
 
-
 }
+

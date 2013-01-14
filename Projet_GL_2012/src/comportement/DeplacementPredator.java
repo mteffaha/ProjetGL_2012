@@ -17,7 +17,7 @@ public class DeplacementPredator implements Deplacement {
     @Override
     public void calculeDeplacementAFaire(BebeteAvecComportement cl) {
         BebetePredator original = (BebetePredator) cl;
-        BebeteAvecComportement beb = (BebeteAvecComportement) original.getTarget();
+        Bebete beb = original.getTarget();
         if(beb == null)
             return;
         /*

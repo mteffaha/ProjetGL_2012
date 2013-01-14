@@ -126,7 +126,7 @@ public class FabriquePlugins extends FabriqueEntites {
 	 * factory
 	 */
 	protected void initConstructors() {
-		bebeteConstructors = getAllConstructors(Bebete.class,
+		bebeteConstructors = getAllConstructors(BebeteAvecComportement.class,
 				ChampDeBebetes.class, int.class, int.class, float.class,
 				float.class, Color.class);
 		// Aucun constructeur de b�b�tes, impossible de continuer
@@ -192,6 +192,7 @@ public class FabriquePlugins extends FabriqueEntites {
 	public Bebete creeBebete(ChampDeBebetes c, int x, int y, float dC,
 			float vC, Color col) {
 		Object instance = null;
+
 		try {
 			instance = bebeteConstructors[bebeteIdx].newInstance(c, x, y, dC,
 					vC, col);
@@ -201,7 +202,8 @@ public class FabriquePlugins extends FabriqueEntites {
 							.getName());
 			return null;
 		}
-		return (Bebete) instance;
+
+		return (Bebete) new Bebete((BebeteAvecComportement)instance);
 	}
 
 	/**

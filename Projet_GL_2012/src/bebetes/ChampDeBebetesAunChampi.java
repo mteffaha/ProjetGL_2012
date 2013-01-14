@@ -34,7 +34,7 @@ public class ChampDeBebetesAunChampi extends ChampDeBebetes {
       super.paint(g); // s'occupe donc d'afficher les bebetes
       leChampi.seDessine(g);
   }
-    public boolean BebeteSurChampi(Bebete b) {
+    public boolean BebeteSurChampi(BebeteAvecComportement b) {
         if (DistancesEtDirections.distanceDepuisUnPoint(b.getX(),b.getY(),leChampi.getX(),leChampi.getY())
                      <= ChampiRouge.diametre)
                 return true;

@@ -7,13 +7,15 @@ package bebetes;
 
 /**
  *
- * @author  collet  (d'apr�s L. O'Brien, C. Reynolds & B. Eckel)
+ * @author collet  (d'apr�s L. O'Brien, C. Reynolds & B. Eckel)
  * @version 3.0
  */
 
 import java.awt.*;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Observable;
+import java.util.Random;
 
 import Panel.BebteControl;
 import Panel.PanelCustom;
@@ -31,175 +33,182 @@ import visu.Positionnable;
 /**
  * @author collet
  */
-public abstract class Bebete extends Observable implements Dessinable,
-		Actionnable, PerceptionAble, Plugin {
+public class Bebete extends Observable implements Dessinable,
+        Actionnable, PerceptionAble, Plugin {
 
-	static float champDeVue = (float) (Math.PI / 4); // En radians
-	static int longueurDeVue = 20; // nb de pixel pour la longueur du champ de
-									// vision
+    // il y a 1 chance sur CHANSE_HASARD pour que la bebete soit hasard sinon elle sera Emergente
+    private static int CHANCE_HASARD = 20;
 
-	protected int x;
-	protected int y;
-	protected float vitesseCourante; // vitesse en pixels par second
-	protected float directionCourante; // en radians [0 - 2 PI[
-	protected Color couleur; // Couleur de remplissage
-	protected ChampDeBebetes champ; // Le champ
-	protected boolean dead = false;// etat de la bebtete (morte ou vivante)
-	protected int energie; // l'energie qu'il reste a la bebete
-	protected Deplacement move;
+    private BebeteAvecComportement currentState;
 
-	public Bebete(ChampDeBebetes c, int x, int y, float dC, float vC, Color col) {
-		champ = c;
-		this.x = x;
-		this.y = y;
-		directionCourante = dC;
-		vitesseCourante = vC;
-		couleur = col;
-	}
+
+    public Bebete(BebeteAvecComportement bebete) {
+        this.currentState = bebete;
+    }
 
 	/* D�finition plus pr�cise de l'action de la bebete */
 
-	public boolean isDead() {
-		return dead;
-	}
+    public boolean isDead() {
+        return currentState.isDead();
+    }
 
-	public void setDead(boolean dead) {
-		this.dead = dead;
-		if (dead == true) {
-			BebteControl.getInstance().getPanel().setOnglet(0);
-			setChanged();
-			notifyObservers();
-		}
-	}
+    public void setDead(boolean dead) {
+        currentState.setDead(dead);
+    }
 
-	public abstract void calculeDeplacementAFaire();
+    public void calculeDeplacementAFaire() {
+        currentState.calculeDeplacementAFaire();
+    }
 
-	public abstract void effectueDeplacement();
+    public void effectueDeplacement() {
+        currentState.effectueDeplacement();
+    }
 
-	// modifie l'energie en fonction du type de la bebete et de son
-	// environnement
-	public abstract void changeEnergie();
+    // modifie l'energie en fonction du type de la bebete et de son
+    // environnement
+    public void changeEnergie() {
+        currentState.changeEnergie();
+    }
 
-	public int getEnergie() {
-		return energie;
-	}
+    public int getEnergie() {
+        return currentState.getEnergie();
+    }
 
-	// Impl�mentation de Actionnable */
+    // Impl�mentation de Actionnable */
 
-	public void agit() {
-		calculeDeplacementAFaire();
-		effectueDeplacement();
-		changeEnergie();
-	}
+    public void agit() {
+        currentState.agit();
+        // si on a un changement d'état voulue
+        if(currentState.getPendingState() != null){
+
+            //public BebeteHasard(ChampDeBebetes c, int x, int y, float dC, float vC, Color col) {
+            try {
+                int energy = currentState.getEnergie();
+                currentState = (BebeteAvecComportement) currentState.getPendingState()
+                        .getConstructors()[0].newInstance(currentState.getChamp(),currentState.getX(),currentState.getY()
+                                                           ,currentState.getDirectionCourante(),currentState.getVitesseCourante(),currentState.getCouleur());
+                currentState.setEnergie(energy);
+
+            } catch (InstantiationException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            }
+        }
+    }
 
 	/* Impl�mentation de Dessinable */
 
-	public Color getCouleur() {
-		return couleur;
-	}
+    public Color getCouleur() {
+        return currentState.getCouleur();
+    }
 
-	public void setCouleur(Color couleur) {
-		this.couleur = couleur;
-	}
+    public void setCouleur(Color couleur) {
+        currentState.setCouleur(couleur);
+    }
 
-	public void seDessine(Graphics g) {
-		// a refaire
-		int CDVDegres = (int) Math.toDegrees(champDeVue);
-		g.setColor(couleur);
-		g.fillArc(x, y, TAILLEGRAPHIQUE, TAILLEGRAPHIQUE,
-				-(int) Math.toDegrees(directionCourante) - (CDVDegres / 2),
-				CDVDegres);
-	}
+    public void seDessine(Graphics g) {
+        currentState.seDessine(g);
+    }
 
-	public void calculerDeplacemementSensible() {
-		directionCourante = (float) ((directionCourante + ((Math.random()
-				* Math.PI / 2) - (Math.PI / 4))) % (Math.PI * 2));
-		if (directionCourante < 0) {
-			directionCourante += (float) (Math.PI * 2);
-		}
-	}
+    public void calculerDeplacemementSensible() {
+        currentState.calculerDeplacemementSensible();
+    }
 
 	/* Impl�mentation de Positionnable */
 
-	public int getX() {
-		return x;
-	}
+    public int getX() {
+          return currentState.getX();
+    }
 
-	public void setX(int x) {
-		this.x = x;
-	}
+    public void setX(int x) {
+         currentState.setX(x);
+    }
 
-	public int getY() {
-		return y;
-	}
+    public int getY() {
+          return currentState.getY();
+    }
 
-	public void setY(int y) {
-		this.y = y;
-	}
+    public void setY(int y) {
+         currentState.setY(y);
+    }
 
-	public ChampDeBebetes getChamp() {
-		return champ; // on retourne un ChampDeBebetes...
-	}
+    public ChampDeBebetes getChamp() {
+        return currentState.getChamp();
+    }
 
 	/* Impl�mentation de Dirigeable */
 
-	public float getVitesseCourante() {
-		return vitesseCourante;
-	}
+    public float getVitesseCourante() {
+        return currentState.getVitesseCourante();
+    }
 
-	public void setVitesseCourante(float vitesseCourante) {
-		this.vitesseCourante = vitesseCourante;
-	}
+    public void setVitesseCourante(float vitesseCourante) {
+              currentState.setVitesseCourante(vitesseCourante);
+    }
 
-	public float getDirectionCourante() {
-		return directionCourante;
-	}
+    public float getDirectionCourante() {
+            return currentState.getDirectionCourante();
+    }
 
-	public void setDirectionCourante(float directionCourante) {
-		this.directionCourante = directionCourante;
-	}
+    public void setDirectionCourante(float directionCourante) {
+         currentState.setDirectionCourante(directionCourante);
+    }
 
 	/* Impl�mentation de PerceptionAble */
 
-	public  int getLongueurDeVue() {
-		return longueurDeVue;
-	}
+    public int getLongueurDeVue() {
+        return currentState.getLongueurDeVue();
+    }
 
-	public float getChampDeVue() {
-		return champDeVue;
-	}
+    public float getChampDeVue() {
+        return currentState.getChampDeVue();
+    }
 
-	public List<Positionnable> getChosesVues() { // utilisation de l'utilitaire
-		return DistancesEtDirections.getChosesVues(this);
-	}
+    public List<Positionnable> getChosesVues() { // utilisation de l'utilitaire
+         return currentState.getChosesVues();
+    }
 
 	/*
-	 * changer la longueur et le champ de vue est "static", alors que les
+     * changer la longueur et le champ de vue est "static", alors que les
 	 * consulter se fait par des fonctions membres
 	 */
 
-	public static void setLongueurDeVue(int lDV) {
-		longueurDeVue = lDV;
-	}
+    public static void setLongueurDeVue(int lDV) {
+         BebeteAvecComportement.setLongueurDeVue(lDV);
+    }
 
-	public static void setChampDeVue(float cv) {
-		champDeVue = cv;
-	}
-	
+    public static void setChampDeVue(float cv) {
+        BebeteAvecComportement.setChampDeVue(cv);
+    }
 
 
-	// partie propre � la transformation en Plugin
+    // partie propre � la transformation en Plugin
 
-	public String getName() {
-		return "bebete";
-	}
+    public String getName() {
+         return currentState.getName();
+    }
 
-	public Deplacement getDeplacement() {
-		return move;
-	}
+    public Deplacement getDeplacement() {
+         return currentState.getDeplacement();
+    }
 
-	public void setDeplacement(Deplacement move) {
-		this.move = move;
-	}
+    public void setDeplacement(Deplacement move) {
+        currentState.setDeplacement(move);
+    }
+
+    public float getDistancePlusProche() {
+        return currentState.getDistancePlusProche();
+    }
+
+    public void setDistancePlusProche(float distancePlusProche) {
+        setDistancePlusProche(distancePlusProche);
+    }
+
+    public BebeteAvecComportement getCurrentState(){
+        return currentState;
+    }
 
 }
