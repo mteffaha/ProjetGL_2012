@@ -96,24 +96,31 @@
 	<target name="test" depends="compile" description="Lance les tests">
 		<mkdir dir="${tests.dir}" />
 		<copy todir="${tests.dir}">
-			<fileset dir="${build.dir}">
+			<fileset dir="${classes.dir}">
 				<include name="**/*Test.class" />
 			</fileset>
 		</copy>
 
-		<junit printsummary="no" haltonfailure="no">
-			<classpath refid="class.path" />
+		
+		<path id = "test.path">
+		    <pathelement location="${tests.dir}" />
+		    <pathelement location="${classes.dir}" />
+		    <path refid="class.path"/>
+		</path>
+		
+		<junit printsummary="no" haltonfailure="yes" fork="yes">
+			<classpath refid="test.path" />
 			<formatter type="brief" usefile="false" />
 
 			<batchtest>
 				<fileset dir="${tests.dir}">
 					<exclude name="App/TestPluginsBebetes.class" />
 					<exclude name="util/TestDynamique.class" />
-					<exclude name="bebetes/BebeteHasardTest.class" />
 					<include name="**/*Test.class" />
 				</fileset>
 			</batchtest>
 		</junit>
+		 
 	</target>
 
 </project>
