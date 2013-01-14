@@ -2,17 +2,17 @@ package util;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.util.logging.Logger;
-import javax.swing.JMenu;
 
+import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
-import bebetes.ChampDeBebetes;
 import Panel.BebteControl;
+import Panel.PanelCustom;
 import Panel.configSimu;
+import bebetes.ChampDeBebetes;
 
 public class PluginMenuSimu implements ActionListener, MenuSimu {
 
@@ -92,14 +92,25 @@ public class PluginMenuSimu implements ActionListener, MenuSimu {
 						 champ.initialiseElements();
 						 champ.demarre();
 						}else{
-							SwingUtilities.invokeLater(new Runnable() {
-								public void run() {
-
-									UIManager.put("swing.boldMetal", Boolean.FALSE);
-									BebteControl.getInstance().getPanel().showPanel();
-								}
-							});
-							
+							if(action.equals("Effectuer les tests"))
+							{
+								PanelCustom testPanel = new PanelCustom("Résultats des test");
+								testPanel.addnewOnglet("tests");
+								testPanel.setOnglet(0);
+								testPanel.showPanel();
+								TestDynamique test = new TestDynamique(testPanel);
+								test.executerTousLesTests();
+							}
+							else
+							{
+								SwingUtilities.invokeLater(new Runnable() {
+									public void run() {
+	
+										UIManager.put("swing.boldMetal", Boolean.FALSE);
+										BebteControl.getInstance().getPanel().showPanel();
+									}
+								});
+							}
 							
 						}
 					}

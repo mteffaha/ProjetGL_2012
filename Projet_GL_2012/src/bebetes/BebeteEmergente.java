@@ -54,6 +54,7 @@ public class BebeteEmergente extends BebeteAvecComportement {
 		if (betesVues.size() < BEAUCOUP) {
 			energie--;
 		}
+		//if(energie <= 0) setDead(true);
 
 	}
 

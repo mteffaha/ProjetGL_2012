@@ -9,35 +9,38 @@
 		<mkdir dir="${classes.dir}" />
 		<mkdir dir="${dist.dir}" />
 		<mkdir dir="${plugins.dir}" />
-		<mkdir dir="${lib.dir}" />
 	</target>
-	
+
 	<path id="class.path">
-        <fileset dir="${lib.dir}">
-           <include name="**/*.jar"/>
-        </fileset>
-    </path>
-    	
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
 	<target name="initPlugins" description="Installation des plugins">
 		<copy todir="${plugins.dir}">
-			<fileset  dir="${PulginsBebete.dir}" >
-                <include name="Bebete*.class"/>
-                <exclude name="BebeteAvecComportement.class"/>
-                <exclude name="Bebete.class"/>
-            </fileset>
+			<fileset dir="${PulginsBebete.dir}">
+				<include name="Bebete*.class" />
+				<exclude name="BebeteAvecComportement.class" />
+				<exclude name="Bebete.class" />
+			</fileset>
 			<fileset file="${PulginsBebete.dir}/ChampiRouge.class" />
 		</copy>
 	</target>
-	
-	<target name="compile" depends="cleanall,init"
-		description="Compile des  classes du projet">
-		
-	    <javac description="Compilation de classes de package simu "
-		     srcdir="${src.dir}" destdir="${classes.dir}" debug="on" fork="true" encoding="ISO-8859-1" />
-             
+
+	<!-- cible modifiee, classpathref modifié utilisant celui defini plus haut -->
+
+	<target name="compile" depends="cleanall,init" description="Compile les classes du projet">
+
+		<javac description="Compilation de classes de package simu "
+			srcdir="${src.dir}" destdir="${classes.dir}" debug="on" fork="true"
+			classpathref="class.path" encoding="ISO-8859-1" />
+
 	</target>
 
-	<target name="jar" depends="compile" description="Genere le .jar du projet">
+	<!-- ###################################################################### -->
+
+	<target name="jar" depends="compile,initPlugins" description="Genere le .jar du projet">
 		<mkdir dir="${dist.dir}/lib" />
 
 		<!-- Mets la classe principale dans le fichier MANIFEST.MF -->
@@ -51,18 +54,23 @@
 			basedir="${classes.dir}" />
 	</target>
 
-	<target name="run" depends="compile,initPlugins,jar" description="Execute le projet">
+	<target name="run" depends="compile,initPlugins,jar"
+		description="Execute le projet">
 		<java jar="${dist.dir}/lib/${project.name}.jar" fork="true" />
 	</target>
+
+	<!-- Retrait du delete de lib, sinon les libs sont supprimées -->
 
 	<target name="clean" description="Supprime les fichiers construits">
 		<!-- Supprime les fichiers construits -->
 		<delete dir="${build.dir}" />
 		<delete dir="${dist.dir}" />
-		<delete dir="${doc.dir}" />
-		<delete dir="${lib.dir}" />
-		<delete dir="plugins"/>
+		<delete dir="${api.dir}" />
+		<delete dir="${tests.dir}" />
+		<delete dir="plugins" />
 	</target>
+
+	<!-- ######################################################## -->
 
 	<target name="cleanall" depends="clean"
 		description="Supprime davantage de fichiers construits">
@@ -71,7 +79,7 @@
 
 
 	<target name="javadoc" depends="init" description="Genere la javadoc du projet">
-		<javadoc destdir="${doc.dir}" use="true">
+		<javadoc destdir="${api.dir}" use="true">
 			<packageset dir="${src.dir}">
 				<include name="**" />
 			</packageset>
@@ -79,8 +87,33 @@
 	</target>
 
 	<target name="installnewplugins" description="Installe de nouveaux plugins">
-		<copy todir="./plugins">
+		<copy todir="${plugins.dir}">
 			<fileset dir="./pluginsDeTest" />
 		</copy>
 	</target>
+
+
+	<target name="test" depends="compile" description="Lance les tests">
+		<mkdir dir="${tests.dir}" />
+		<copy todir="${tests.dir}">
+			<fileset dir="${build.dir}">
+				<include name="**/*Test.class" />
+			</fileset>
+		</copy>
+
+		<junit printsummary="no" haltonfailure="no">
+			<classpath refid="class.path" />
+			<formatter type="brief" usefile="false" />
+
+			<batchtest>
+				<fileset dir="${tests.dir}">
+					<exclude name="App/TestPluginsBebetes.class" />
+					<exclude name="util/TestDynamique.class" />
+					<exclude name="bebetes/BebeteHasardTest.class" />
+					<include name="**/*Test.class" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
 </project>

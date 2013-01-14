@@ -31,6 +31,7 @@ public class BebeteHasard extends BebeteAvecComportement {
 		else {
 			energie++;
 		}
+		//if(energie <= 0) setDead(true);
 	}
 
 

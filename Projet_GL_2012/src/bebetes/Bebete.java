@@ -15,6 +15,9 @@ import java.awt.*;
 import java.util.List;
 import java.util.Observable;
 
+import Panel.BebteControl;
+import Panel.PanelCustom;
+
 import comportement.*;
 import fr.unice.plugin.Plugin;
 
@@ -63,6 +66,7 @@ public abstract class Bebete extends Observable implements Dessinable,
 	public void setDead(boolean dead) {
 		this.dead = dead;
 		if (dead == true) {
+			BebteControl.getInstance().getPanel().setOnglet(0);
 			setChanged();
 			notifyObservers();
 		}

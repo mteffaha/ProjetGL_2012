@@ -10,6 +10,8 @@ public class ChampiRouge extends Champi {
 
 	public static int TAILLEGRAPHIQUE = 16;
 	
+	public static int diametre=20;
+	
     protected ChampDeBebetes champ;   
     protected int x, y;
     protected Color couleur = Color.RED;
@@ -31,8 +33,10 @@ public class ChampiRouge extends Champi {
 
 	public void seDessine(Graphics g) {
 		if(visibilite){
+			int r=diametre/2;
 	        g.setColor(couleur);
 	        g.fillOval(x,y,TAILLEGRAPHIQUE,TAILLEGRAPHIQUE);
+	        g.drawOval((x-r)+TAILLEGRAPHIQUE/2, (y-r)+TAILLEGRAPHIQUE/2, 2*r, 2*r);
 		}
 	}
 

@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.reflect.Constructor;
 import java.net.MalformedURLException;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import comportement.*;
@@ -60,7 +61,7 @@ public class TestPluginsBebetes extends JFrame {
 		buildPluginMenus();
 		
 		// La zone de simulation au centre
-		champ = pluginFactory.creeChampDeBebetes(640, 480, 50);
+		champ = pluginFactory.creeChampDeBebetes(640, 480, new Random().nextInt(100)+1);
 		getContentPane().add(champ, BorderLayout.CENTER);
 
 		Menu.setChamp(champ);// intialise le champ pour la barre de menu
@@ -138,6 +139,11 @@ public class TestPluginsBebetes extends JFrame {
 		Menu.setChamp(champ);
 		String sub2[] = { "Paramétre", "|", "Panneau de Controle" };
 		Menu.BuildMenuBar(sub2);
+		mb.add(Menu.getMenu());
+		Menu = new PluginMenuSimu();
+		Menu.setTitle("Test");
+		String sub3[] = { "Effectuer les tests"};
+		Menu.BuildMenuBar(sub3);
 		mb.add(Menu.getMenu());
 		
 	}
