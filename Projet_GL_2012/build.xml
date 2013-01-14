@@ -55,7 +55,7 @@
 			basedir="${classes.dir}" />
 	</target>
 
-	<target name="run" depends="compile,initPlugins,jar,test"
+	<target name="run" depends="compile,initPlugins,jar,inittest"
 		description="Execute le projet">
 		<java jar="${dist.dir}/lib/${project.name}.jar" fork="true" />
 	</target>
@@ -93,22 +93,24 @@
 		</copy>
 	</target>
 
+	<target name="inittest" depends="compile,initPlugins"
+		description="Prepare les tests">
 
-	<target name="test" depends="compile,initPlugins" description="Lance les tests">
 		<mkdir dir="${tests.dir}" />
 		<copy todir="${tests.dir}">
 			<fileset dir="${classes.dir}">
 				<include name="**/*Test.class" />
 			</fileset>
 		</copy>
+	</target>
 
-		
-		<path id = "test.path">
-		    <pathelement location="${tests.dir}" />
-		    <pathelement location="${classes.dir}" />
-		    <path refid="class.path"/>
+	<target name="runtest" depends="inittest" description="Lance les tests">
+		<path id="test.path">
+			<pathelement location="${tests.dir}" />
+			<pathelement location="${classes.dir}" />
+			<path refid="class.path" />
 		</path>
-		
+
 		<junit printsummary="no" haltonfailure="yes" fork="yes">
 			<classpath refid="test.path" />
 			<formatter type="brief" usefile="false" />
@@ -121,7 +123,7 @@
 				</fileset>
 			</batchtest>
 		</junit>
-		 
+
 	</target>
 
 </project>
