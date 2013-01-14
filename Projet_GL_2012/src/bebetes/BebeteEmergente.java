@@ -22,6 +22,11 @@ public class BebeteEmergente extends BebeteAvecComportement {
         energie = 50; //valeur de depart de l'energie
 
     }
+    public BebeteEmergente(BebeteAvecComportement bebete) {
+        super(bebete.getChamp(),bebete.getX(), bebete.getY(), bebete.getDirectionCourante(), bebete.getVitesseCourante(), bebete.getCouleur());
+        setDeplacement(new DeplacementEmergent());
+        energie = 50; //valeur de depart de l'energie
+    }
 
 
     /*
@@ -72,22 +77,12 @@ public class BebeteEmergente extends BebeteAvecComportement {
 
         // a refaire
         int CDVDegres = (int) Math.toDegrees(champDeVue);
-        g.setColor(new Color(0.9f, 0, 0, 0.3f));
-        if (framCounter > 50) {
-            //g.drawOval(x+(TAILLEGRAPHIQUE/4),y+(TAILLEGRAPHIQUE/4),TAILLEGRAPHIQUE/2,TAILLEGRAPHIQUE/2);
 
-        } else {
-            g.fillArc(x - (TAILLEGRAPHIQUE / 4), y - (TAILLEGRAPHIQUE / 4), TAILLEGRAPHIQUE + (TAILLEGRAPHIQUE / 2), TAILLEGRAPHIQUE + (TAILLEGRAPHIQUE / 2),
-                    -(int) Math.toDegrees(directionCourante) - (CDVDegres / 2),
-                    CDVDegres);
-        }
 
         framCounter++;
         if (framCounter > 100) {
             framCounter = 0;
         }
-        //g.setColor(new Color(0,0,0,0.2f));
-        //g.drawRect(x,y-10,TAILLEGRAPHIQUE,4);
         if (energie < 20) {
             if (energie > 0) {
                 g.setColor(new Color(0.9f, 0, 0.0f, 0.5f));

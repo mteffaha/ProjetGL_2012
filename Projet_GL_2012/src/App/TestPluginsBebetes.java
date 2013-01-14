@@ -210,7 +210,7 @@ public class TestPluginsBebetes extends JFrame {
 	
 	/**
 	 * 
-	 * @param classname : nom de la classe dont sera examiner pour founir le bon alogorithme a appliquer
+	 * @param Classname : nom de la classe dont sera examiner pour founir le bon alogorithme a appliquer
 	 * permet d'appliquer de changer le  deplacement d'une bebete selon son type 
 	 * 
 	 */
@@ -218,11 +218,17 @@ public class TestPluginsBebetes extends JFrame {
 	private void ChangeTypeDeplacement(String ClassName){
 		if(ClassName.equals("BebeteHasard")){
 			for (Bebete bet : champ.getListeBebete()) {
-				bet.setDeplacement(new DeplacementHasard());
+                bet.setPendingState(BebeteHasard.class);
+                //bet = new Bebete(new BebeteHasard(bet.getCurrentState()));
+                logger.info("Bebete Hasard Cree");
+				//bet.setDeplacement(new DeplacementHasard());
 			}
 		}else{
 			for (Bebete bet : champ.getListeBebete()) {
-				bet.setDeplacement(new DeplacementEmergent());
+                bet.setPendingState(BebeteEmergente.class);
+                //bet = new Bebete(new BebeteEmergente(bet.getCurrentState()));
+                logger.info("Bebete Emergente Cree");
+				//bet.setDeplacement(new DeplacementEmergent());
 			}
 		}
 	}

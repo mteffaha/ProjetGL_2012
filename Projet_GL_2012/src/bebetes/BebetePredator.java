@@ -165,6 +165,42 @@ public class BebetePredator extends BebeteAvecComportement {
             return false;
         }
 
+
+        private int framCounter = 0;
+
+
+        public void seDessine(Graphics g) {
+            // a refaire
+            int CDVDegres = (int) Math.toDegrees(champDeVue);
+            g.setColor(new Color(1, 0, 0, 0.3f));
+            if (framCounter > 50) {
+                //g.drawOval(x+(TAILLEGRAPHIQUE/4),y+(TAILLEGRAPHIQUE/4),TAILLEGRAPHIQUE/2,TAILLEGRAPHIQUE/2);
+
+            } else {
+                g.drawArc(x - (TAILLEGRAPHIQUE / 4), y - (TAILLEGRAPHIQUE / 4), TAILLEGRAPHIQUE + (TAILLEGRAPHIQUE / 2), TAILLEGRAPHIQUE + (TAILLEGRAPHIQUE / 2),
+                        -(int) Math.toDegrees(directionCourante) - (CDVDegres / 2),
+                        CDVDegres);
+            }
+
+            framCounter++;
+            if (framCounter > 100) {
+                framCounter = 0;
+            }
+            if (energie < 20) {
+                if (energie > 0) {
+                    g.setColor(new Color(0.9f, 0, 0.0f, 0.5f));
+                } else {
+                    g.setColor(new Color(0.5f,0.5f,0.5F,0.5f));
+                }
+            } else {
+                g.setColor(new Color(0.0f, 0.9f, 0.0f, 0.5f));
+            }
+            g.drawString(""+energie, x, y - 10);
+            g.setColor(couleur);
+            g.fillArc(x, y, TAILLEGRAPHIQUE, TAILLEGRAPHIQUE,
+                    -(int) Math.toDegrees(directionCourante) - (CDVDegres / 2),
+                    CDVDegres);
+        }
     }
 
 }

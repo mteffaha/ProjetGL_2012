@@ -21,11 +21,18 @@ public class BebeteHasard extends BebeteAvecComportement {
 		nbTour = 0;
 	}
 
+    public BebeteHasard(BebeteAvecComportement bebete) {
+        super(bebete.getChamp(),bebete.getX(), bebete.getY(), bebete.getDirectionCourante(), bebete.getVitesseCourante(), bebete.getCouleur());
+        setDeplacement(new DeplacementHasard());
+        energie = 50; //valeur de depart de l'energie
+        nbTour = 0;
+    }
+
 	
 	@Override
 	public void changeEnergie() {
 		Random rand = new Random();
-		if (rand.nextInt(100) < 50) {
+		if (rand.nextInt(60) == 0) {
 			energie--;
 		}
 		else {
@@ -45,8 +52,6 @@ public class BebeteHasard extends BebeteAvecComportement {
     public void seDessine(Graphics g) {
         // a refaire
         int CDVDegres = (int) Math.toDegrees(champDeVue);
-        g.setColor(new Color(255,0,0,0.2f));
-        g.fillOval(x,y,TAILLEGRAPHIQUE,TAILLEGRAPHIQUE);
         g.setColor(couleur);
         g.fillArc(x, y, TAILLEGRAPHIQUE, TAILLEGRAPHIQUE,
                 -(int) Math.toDegrees(directionCourante) - (CDVDegres / 2),

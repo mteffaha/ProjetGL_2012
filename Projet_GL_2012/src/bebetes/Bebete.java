@@ -53,11 +53,23 @@ public class Bebete extends Observable implements Dessinable,
     }
 
     public void setDead(boolean dead) {
+
         currentState.setDead(dead);
+        if (dead == true) {
+            BebteControl.getInstance().getPanel().setOnglet(0);
+            setChanged();
+            notifyObservers();
+        }
     }
 
     public void calculeDeplacementAFaire() {
-        currentState.calculeDeplacementAFaire();
+        boolean notify = currentState.calculeDeplacementAFaire();
+        if(notify){
+            //on recupere le bon onglet d'affichage
+            BebteControl.getInstance().getPanel().setOnglet(1);
+            setChanged();
+            notifyObservers();
+        }
     }
 
     public void effectueDeplacement() {
@@ -78,6 +90,15 @@ public class Bebete extends Observable implements Dessinable,
 
     public void agit() {
         currentState.agit();
+        changeCurrentState();
+
+    }
+
+    public void setPendingState(Class<? extends BebeteAvecComportement> pendingState){
+        this.currentState.setPendingState(pendingState);
+    }
+
+    private void changeCurrentState(){
         // si on a un changement d'état voulue
         if(currentState.getPendingState() != null){
 
@@ -86,7 +107,7 @@ public class Bebete extends Observable implements Dessinable,
                 int energy = currentState.getEnergie();
                 currentState = (BebeteAvecComportement) currentState.getPendingState()
                         .getConstructors()[0].newInstance(currentState.getChamp(),currentState.getX(),currentState.getY()
-                                                           ,currentState.getDirectionCourante(),currentState.getVitesseCourante(),currentState.getCouleur());
+                        ,currentState.getDirectionCourante(),currentState.getVitesseCourante(),currentState.getCouleur());
                 currentState.setEnergie(energy);
                 currentState.setPendingState(null);
 
@@ -211,5 +232,7 @@ public class Bebete extends Observable implements Dessinable,
     public BebeteAvecComportement getCurrentState(){
         return currentState;
     }
+
+
 
 }

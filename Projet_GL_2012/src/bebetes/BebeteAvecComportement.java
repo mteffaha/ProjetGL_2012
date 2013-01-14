@@ -44,7 +44,7 @@ public abstract class BebeteAvecComportement extends Observable implements Dessi
 
 	public float distancePlusProche = Float.MAX_VALUE;
 
-	protected int BEAUCOUP = 2;
+	protected int BEAUCOUP = 112;
 
     private Class<? extends BebeteAvecComportement> pendingState;
 
@@ -65,11 +65,6 @@ public abstract class BebeteAvecComportement extends Observable implements Dessi
 
     public void setDead(boolean dead) {
         this.dead = dead;
-        if (dead == true) {
-            BebteControl.getInstance().getPanel().setOnglet(0);
-            setChanged();
-            notifyObservers();
-        }
     }
 
     public int getEnergie() {
@@ -187,22 +182,21 @@ public abstract class BebeteAvecComportement extends Observable implements Dessi
     }
 	public abstract void InitBebeteField();
 
-	public void calculeDeplacementAFaire() {
+	public boolean calculeDeplacementAFaire() {
+        boolean notify = false;
 		InitBebeteField();
 		if (champ.isBebeteSensible()) {
 			if (((ChampDeBebetesAunChampi) this.getChamp())
 					.BebeteSurChampi(this)) {
 				calculerDeplacemementSensible();
-				//on recupere le bon onglet d'affichage 
-				BebteControl.getInstance().getPanel().setOnglet(1);
-				setChanged();
-				notifyObservers();
+                notify = true;
 			}else{
 				move.calculeDeplacementAFaire(this);
 			}
 		} else {
 		move.calculeDeplacementAFaire(this);
 		}
+        return notify;
 	}
 
 	public void effectueDeplacement() {
