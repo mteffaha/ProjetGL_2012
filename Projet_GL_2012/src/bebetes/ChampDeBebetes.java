@@ -7,6 +7,9 @@ package bebetes;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
+
+import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
+
 import Panel.BebteControl;
 import simu.Actionnable;
 import simu.Simulateur;
@@ -17,7 +20,7 @@ import visu.VisualisateurAnime;
  * @author  collet
  * version avec Champignons (interm�diaire : n'impl�mente pas correctement Builder et/ou Factory Method)
  */
-public class ChampDeBebetes extends VisualisateurAnime { 
+public class ChampDeBebetes extends VisualisateurAnime implements Observer{ 
 
 	public static final float vitesseMax = 10f;
 
@@ -53,6 +56,7 @@ public class ChampDeBebetes extends VisualisateurAnime {
 		//intitalise les observeurs 
 		for(Bebete bet : lb){
 			bet.addObserver(BebteControl.getInstance());
+			bet.addObserver(this);
 		}
 	}
 		
@@ -113,6 +117,19 @@ public class ChampDeBebetes extends VisualisateurAnime {
 
 	public void setBebeteSensible(boolean bebeteSensible) {
 		BebeteSensible = bebeteSensible;
+	}
+
+	@Override
+	public void update(Observable beb, Object arg1) {
+		// TODO Auto-generated method stub
+		if(beb instanceof Bebete){
+			if(BebteControl.getInstance().getPanel().getNumonglet()==0){
+				lb.remove(((Bebete) beb).getId());
+				for(int j=0;j<lb.size();j++){
+					lb.get(j).setId(j);
+				}
+			}
+		}
 	}
 
 }

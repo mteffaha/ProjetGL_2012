@@ -1,9 +1,9 @@
 package Panel;
 
+import bebetes.Bebete;
+
 import java.util.Observable;
 import java.util.Observer;
-
-import bebetes.Bebete;
 
 public class BebteControl implements Observer {
 	

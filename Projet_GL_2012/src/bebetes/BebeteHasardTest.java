@@ -8,11 +8,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import bebetes.Bebete;
-import bebetes.BebeteHasard;
 import bebetes.ChampDeBebetes;
 import bebetes.FabriqueEntites;
-import bebetes.FabriquePlugins;
 
 public class BebeteHasardTest {
 

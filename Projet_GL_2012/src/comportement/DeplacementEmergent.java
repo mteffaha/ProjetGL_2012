@@ -2,7 +2,6 @@ package comportement;
 
 
 import java.util.List;
-import java.util.logging.Logger;
 
 import bebetes.BebeteAvecComportement;
 import bebetes.BebeteEmergente;

@@ -4,8 +4,6 @@ import bebetes.Bebete;
 import bebetes.BebeteAvecComportement;
 import bebetes.BebetePredator;
 
-import java.util.List;
-
 /**
  * User: Teffaha Mortadha
  * Date: 1/13/13

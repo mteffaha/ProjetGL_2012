@@ -1,11 +1,5 @@
 package bebetes;
 
-import java.awt.*;
-import java.util.*;
-
-import Panel.BebteControl;
-import Panel.PanelCustom;
-
 import comportement.Deplacement;
 import fr.unice.plugin.Plugin;
 import simu.Actionnable;
@@ -14,7 +8,14 @@ import visu.Dessinable;
 import visu.PerceptionAble;
 import visu.Positionnable;
 
+import java.awt.*;
+import java.util.*;
 
+/**
+ * User: Teffaha Mortadha
+ * Date: 1/15/13
+ * Time: 12:38 AM
+ */
 public abstract class BebeteAvecComportement extends Observable implements Dessinable,
         Actionnable, PerceptionAble, Plugin {
 
@@ -22,7 +23,7 @@ public abstract class BebeteAvecComportement extends Observable implements Dessi
     static float champDeVue = (float) (Math.PI / 4); // En radians
     static int longueurDeVue = 20; // nb de pixel pour la longueur du champ de
     // vision
-
+    protected int id;
     protected int x;
     protected int y;
     protected float vitesseCourante; // vitesse en pixels par second
@@ -33,42 +34,32 @@ public abstract class BebeteAvecComportement extends Observable implements Dessi
     protected int energie; // l'energie qu'il reste a la bebete
     protected Deplacement move;
 
-	public static final int nbTourChgt = 30; // nombre de tours entre chaque
-	// changement au hasard de
-	// direction et de vitesse
+    public static final int nbTourChgt = 30; // nombre de tours entre chaque
+    // changement au hasard de
+    // direction et de vitesse
 
-	protected int nbTour; // nombre de tours de la b�b�tes depuis le pr�c�dent
-	// changement de direction et de vitesse
+    protected int nbTour; // nombre de tours de la b�b�tes depuis le pr�c�dent
+    // changement de direction et de vitesse
 
-	public static final float distanceMin = 10f; // En pixels
+    public static final float distanceMin = 10f; // En pixels
 
-	public float distancePlusProche = Float.MAX_VALUE;
+    public float distancePlusProche = Float.MAX_VALUE;
 
-	protected int BEAUCOUP = 112;
+    protected int BEAUCOUP = 112;
 
     private Class<? extends BebeteAvecComportement> pendingState;
 
-    private int chanceDevenirPredateur = 5;
-
-    /**
-     *
-     *
-     * @return Chance de devenir predateur (1/valeur de devenir predateur)
-     */
+    private int chanceDevenirPredateur = 10;
     public int getChanceDevenirPredateur(){
         return chanceDevenirPredateur;
     }
 
-    /**
-     *
-     * @param chance  Chance de devenir predateur (1/valeur de devenir predateur)
-     */
     public void setChanceDevenirPredateur(int chance){
-          chanceDevenirPredateur = chance;
+        chanceDevenirPredateur = chance;
     }
 
-	public BebeteAvecComportement(ChampDeBebetes c, int x, int y, float dC,
-			float vC, Color col) {
+    public BebeteAvecComportement(ChampDeBebetes c, int x, int y, float dC,
+                                  float vC, Color col) {
         champ = c;
         this.x = x;
         this.y = y;
@@ -76,7 +67,7 @@ public abstract class BebeteAvecComportement extends Observable implements Dessi
         vitesseCourante = vC;
         couleur = col;
         pendingState = null;
-	}
+    }
 
     public boolean isDead() {
         return dead;
@@ -94,6 +85,14 @@ public abstract class BebeteAvecComportement extends Observable implements Dessi
         this.energie = energie;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void agit() {
         calculeDeplacementAFaire();
         effectueDeplacement();
@@ -104,10 +103,14 @@ public abstract class BebeteAvecComportement extends Observable implements Dessi
         return couleur;
     }
 
+
+
+
     public void setCouleur(Color couleur) {
         this.couleur = couleur;
     }
 
+    @Override
     public void seDessine(Graphics g) {
         // a refaire
         int CDVDegres = (int) Math.toDegrees(champDeVue);
@@ -199,58 +202,57 @@ public abstract class BebeteAvecComportement extends Observable implements Dessi
     public void setDeplacement(Deplacement move) {
         this.move = move;
     }
-	public abstract void InitBebeteField();
+    public abstract void InitBebeteField();
 
-	public boolean calculeDeplacementAFaire() {
+    public boolean calculeDeplacementAFaire() {
         boolean notify = false;
-		InitBebeteField();
-		if (champ.isBebeteSensible()) {
-			if (((ChampDeBebetesAunChampi) this.getChamp())
-					.BebeteSurChampi(this)) {
-				calculerDeplacemementSensible();
+        InitBebeteField();
+        if (champ.isBebeteSensible()) {
+            if (((ChampDeBebetesAunChampi) this.getChamp())
+                    .BebeteSurChampi(this)) {
+                calculerDeplacemementSensible();
                 notify = true;
-                System.out.println("Notify CalculeDeplacementAFaire");
-			}else{
-				move.calculeDeplacementAFaire(this);
-			}
-		} else {
-		move.calculeDeplacementAFaire(this);
-		}
+            }else{
+                move.calculeDeplacementAFaire(this);
+            }
+        } else {
+            move.calculeDeplacementAFaire(this);
+        }
         return notify;
-	}
+    }
 
-	public void effectueDeplacement() {
-	
-			move.effectueDeplacement(this);
-		
-	}
+    public void effectueDeplacement() {
 
-	public abstract void changeEnergie();
+        move.effectueDeplacement(this);
 
-	/**
-	 * @return nbTour
-	 * @uml.property name="nbTour"
-	 */
-	public int getNbTour() {
-		return nbTour;
-	}
+    }
 
-	/**
-	 * @param nbTour
-	 *            nbTour � d�finir
-	 * @uml.property name="nbTour"
-	 */
-	public void setNbTour(int nbTour) {
-		this.nbTour = nbTour;
-	}
+    public abstract void changeEnergie();
 
-	public float getDistancePlusProche() {
-		return distancePlusProche;
-	}
+    /**
+     * @return nbTour
+     * @uml.property name="nbTour"
+     */
+    public int getNbTour() {
+        return nbTour;
+    }
 
-	public void setDistancePlusProche(float distancePlusProche) {
-		this.distancePlusProche = distancePlusProche;
-	}
+    /**
+     * @param nbTour
+     *            nbTour � d�finir
+     * @uml.property name="nbTour"
+     */
+    public void setNbTour(int nbTour) {
+        this.nbTour = nbTour;
+    }
+
+    public float getDistancePlusProche() {
+        return distancePlusProche;
+    }
+
+    public void setDistancePlusProche(float distancePlusProche) {
+        this.distancePlusProche = distancePlusProche;
+    }
 
     public Class<? extends BebeteAvecComportement> getPendingState(){
         return this.pendingState;
@@ -258,10 +260,7 @@ public abstract class BebeteAvecComportement extends Observable implements Dessi
 
     public void setPendingState(Class<? extends BebeteAvecComportement> newPendingState){
         this.pendingState = newPendingState;
-
     }
 
-
-
-
 }
+

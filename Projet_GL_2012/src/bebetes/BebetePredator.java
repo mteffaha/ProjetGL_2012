@@ -106,13 +106,18 @@ public class BebetePredator extends BebeteAvecComportement {
             energie--;
         }
         if(energie <= 0){
+
             this.setDead(true);
         }
         if(energyChanceCounter >= 100){
             energyChanceCounter = 0;
         }
+        String died = (this.isDead())?"DEAD":"ALIVE";
+
+        System.out.println("PREDATOR "+energie+"  "+died+"  =======================================");
         if (target == null) // si on n'a pas encore de cible on ne peut pas changer d'enérgie.
             return;
+
         boolean isTouching = false; // permet de teste s'il y a une collision entre notre predateur et ca cible
 
         if (new Square(getX() + (TAILLEGRAPHIQUE / 2), getY() + (TAILLEGRAPHIQUE / 2), TAILLEGRAPHIQUE)

@@ -1,6 +1,5 @@
 package comportement;
 
-import bebetes.Bebete;
 import bebetes.BebeteAvecComportement;
 import bebetes.BebeteHasard;
 

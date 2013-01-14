@@ -1,45 +1,30 @@
 package bebetes;
 
-/*
- *                  Bebete.java
- *
- */
-
-/**
- *
- * @author collet  (d'apr�s L. O'Brien, C. Reynolds & B. Eckel)
- * @version 3.0
- */
+import comportement.Deplacement;
+import fr.unice.plugin.Plugin;
+import simu.Actionnable;
+import visu.Dessinable;
+import visu.PerceptionAble;
+import visu.Positionnable;
+import Panel.BebteControl;
 
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Observable;
-import java.util.Observer;
-import java.util.Random;
-
-import Panel.BebteControl;
-import Panel.PanelCustom;
-
-import comportement.*;
-import fr.unice.plugin.Plugin;
-
-import simu.Actionnable;
-import util.DistancesEtDirections;
-
-import visu.Dessinable;
-import visu.PerceptionAble;
-import visu.Positionnable;
 
 /**
- * @author collet
+ * User: Teffaha Mortadha
+ * Date: 1/15/13
+ * Time: 12:43 AM
  */
 public class Bebete extends Observable implements Dessinable,
-        Actionnable, PerceptionAble, Plugin ,Observer{
+        Actionnable, PerceptionAble, Plugin {
 
     // il y a 1 chance sur CHANSE_HASARD pour que la bebete soit hasard sinon elle sera Emergente
     private static int CHANCE_HASARD = 20;
     private static final int MINIMUM_ENERDY_FOR_PREDATOR = 20;
+
 
     private BebeteAvecComportement currentState;
 
@@ -144,19 +129,19 @@ public class Bebete extends Observable implements Dessinable,
 	/* Impl�mentation de Positionnable */
 
     public int getX() {
-          return currentState.getX();
+        return currentState.getX();
     }
 
     public void setX(int x) {
-         currentState.setX(x);
+        currentState.setX(x);
     }
 
     public int getY() {
-          return currentState.getY();
+        return currentState.getY();
     }
 
     public void setY(int y) {
-         currentState.setY(y);
+        currentState.setY(y);
     }
 
     public ChampDeBebetes getChamp() {
@@ -170,15 +155,15 @@ public class Bebete extends Observable implements Dessinable,
     }
 
     public void setVitesseCourante(float vitesseCourante) {
-              currentState.setVitesseCourante(vitesseCourante);
+        currentState.setVitesseCourante(vitesseCourante);
     }
 
     public float getDirectionCourante() {
-            return currentState.getDirectionCourante();
+        return currentState.getDirectionCourante();
     }
 
     public void setDirectionCourante(float directionCourante) {
-         currentState.setDirectionCourante(directionCourante);
+        currentState.setDirectionCourante(directionCourante);
     }
 
 	/* Impl�mentation de PerceptionAble */
@@ -192,7 +177,7 @@ public class Bebete extends Observable implements Dessinable,
     }
 
     public List<Positionnable> getChosesVues() { // utilisation de l'utilitaire
-         return currentState.getChosesVues();
+        return currentState.getChosesVues();
     }
 
 	/*
@@ -201,7 +186,7 @@ public class Bebete extends Observable implements Dessinable,
 	 */
 
     public static void setLongueurDeVue(int lDV) {
-         BebeteAvecComportement.setLongueurDeVue(lDV);
+        BebeteAvecComportement.setLongueurDeVue(lDV);
     }
 
     public static void setChampDeVue(float cv) {
@@ -212,11 +197,11 @@ public class Bebete extends Observable implements Dessinable,
     // partie propre � la transformation en Plugin
 
     public String getName() {
-         return currentState.getName();
+        return currentState.getName();
     }
 
     public Deplacement getDeplacement() {
-         return currentState.getDeplacement();
+        return currentState.getDeplacement();
     }
 
     public void setDeplacement(Deplacement move) {
@@ -234,11 +219,13 @@ public class Bebete extends Observable implements Dessinable,
     public BebeteAvecComportement getCurrentState(){
         return currentState;
     }
-
-
-    @Override
-    public void update(Observable o, Object arg) {
-        setChanged();
-        notifyObservers();
+    public int getId() {
+        return  currentState.id;
     }
+
+    public void setId(int id) {
+        currentState.id = id;
+    }
+
+
 }
