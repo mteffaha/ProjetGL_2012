@@ -55,7 +55,7 @@
 			basedir="${classes.dir}" />
 	</target>
 
-	<target name="run" depends="compile,initPlugins,jar"
+	<target name="run" depends="compile,initPlugins,jar,test"
 		description="Execute le projet">
 		<java jar="${dist.dir}/lib/${project.name}.jar" fork="true" />
 	</target>
