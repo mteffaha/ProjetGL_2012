@@ -71,7 +71,6 @@ public class BebetePredator extends BebeteAvecComportement {
             // list qui vas contenie les bebete et leur caution calculer, ceux qui ont
             TreeMap<Double, Bebete> list = new TreeMap<Double, Bebete>();
             Double caution = 0.0d;
-            System.out.println("Calcule des caution===============================");
             while (iterator.hasNext()) {
                 Bebete beb = iterator.next();
 
@@ -94,14 +93,24 @@ public class BebetePredator extends BebeteAvecComportement {
                 plus grand caution ça veut dire celle qui posséde la grand rapport (rapprochement/Taille d'enérgie)
              */
             target = list.lastEntry().getValue();
-            System.out.println("Target Detecter ===========================================");
 
         }
 
     }
 
+    private int energyChanceCounter = 0;
     @Override
     public void changeEnergie() {
+        energyChanceCounter++;
+        if(energyChanceCounter >=60){
+            energie--;
+        }
+        if(energie <= 0){
+            this.setDead(true);
+        }
+        if(energyChanceCounter >= 100){
+            energyChanceCounter = 0;
+        }
         if (target == null) // si on n'a pas encore de cible on ne peut pas changer d'enérgie.
             return;
         boolean isTouching = false; // permet de teste s'il y a une collision entre notre predateur et ca cible

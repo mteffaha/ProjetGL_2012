@@ -48,6 +48,25 @@ public abstract class BebeteAvecComportement extends Observable implements Dessi
 
     private Class<? extends BebeteAvecComportement> pendingState;
 
+    private int chanceDevenirPredateur = 5;
+
+    /**
+     *
+     *
+     * @return Chance de devenir predateur (1/valeur de devenir predateur)
+     */
+    public int getChanceDevenirPredateur(){
+        return chanceDevenirPredateur;
+    }
+
+    /**
+     *
+     * @param chance  Chance de devenir predateur (1/valeur de devenir predateur)
+     */
+    public void setChanceDevenirPredateur(int chance){
+          chanceDevenirPredateur = chance;
+    }
+
 	public BebeteAvecComportement(ChampDeBebetes c, int x, int y, float dC,
 			float vC, Color col) {
         champ = c;

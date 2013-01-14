@@ -3,6 +3,7 @@ package bebetes;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -61,7 +62,9 @@ public class BebeteEmergente extends BebeteAvecComportement {
             energie--;
         }
         if(getEnergie()< MINIMUM_ENERDY_FOR_PREDATOR){
-            setPendingState(BebetePredator.class);
+            if(new Random().nextInt(getChanceDevenirPredateur()) == 0){
+                setPendingState(BebetePredator.class);
+            }
         }
         if (energie <= 0) setDead(true);
 

@@ -40,8 +40,9 @@ public class BebeteHasard extends BebeteAvecComportement {
 			energie++;
 		}
         if(getEnergie()< MINIMUM_ENERDY_FOR_PREDATOR){
+            if(new Random().nextInt(getChanceDevenirPredateur()) == 0){
             setPendingState(BebetePredator.class);
-            System.out.println("PREDATOR CREER===========================================================");
+            }
         }
 		if(energie <= 0) setDead(true);
 	}
