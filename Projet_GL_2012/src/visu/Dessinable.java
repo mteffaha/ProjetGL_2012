@@ -12,7 +12,7 @@ import java.awt.Graphics;
  */
 public interface Dessinable extends Positionnable {
 
-	public static int TAILLEGRAPHIQUE = 10;
+	public static int TAILLEGRAPHIQUE = 25;
 	
 	public Color getCouleur();
 
