@@ -38,6 +38,7 @@ public class Bebete extends Observable implements Dessinable,
 
     // il y a 1 chance sur CHANSE_HASARD pour que la bebete soit hasard sinon elle sera Emergente
     private static int CHANCE_HASARD = 20;
+    private static final int MINIMUM_ENERDY_FOR_PREDATOR = 20;
 
     private BebeteAvecComportement currentState;
 

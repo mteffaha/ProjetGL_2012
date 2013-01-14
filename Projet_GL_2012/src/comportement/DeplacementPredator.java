@@ -33,7 +33,7 @@ public class DeplacementPredator implements Deplacement {
         beb.setY(y);
         beb.setVitesseCourante(v); // vitesse minimale = 2
         beb.setDirectionCourante(dc);
-        beb.setDistancePlusProche(dpp);
+       // beb.setDistancePlusProche(dpp);
         // on calcule l'angle entre la position de la bebete predatrice et la position de ça cible
         int dy = targetY - original.getY();
         int dx = targetX - original.getY();
@@ -42,7 +42,8 @@ public class DeplacementPredator implements Deplacement {
             ci notre Bebete n'est pas aux moin 110% plus rapide que ça cible on augmente ça vitesse
          ( Survive of the fastest ;D )
         */
-        if (original.getVitesseCourante() <= (original.getTarget().getVitesseCourante() * 1.1)) {
+        if (original.getVitesseCourante() <= (original.getTarget().getVitesseCourante() * 1.1f)) {
+            original.getTarget().setVitesseCourante(original.getVitesseCourante()*0.8f);
             original.setVitesseCourante((float) (original.getVitesseCourante() * 1.1));
         }
 

@@ -65,12 +65,13 @@ public class BebetePredator extends BebeteAvecComportement {
         /*si aucune cible n'a étais définit
           on essaye de récupérer la bebete qui nous offre le plus d'enérgie en ce déplacent le mois possible
           */
-        if (target != null) {
+        if (target == null) {
             // on recupere les Tous les Bebete
             Iterator<Bebete> iterator = this.getChamp().getListeBebete().iterator();
             // list qui vas contenie les bebete et leur caution calculer, ceux qui ont
             TreeMap<Double, Bebete> list = new TreeMap<Double, Bebete>();
             Double caution = 0.0d;
+            System.out.println("Calcule des caution===============================");
             while (iterator.hasNext()) {
                 Bebete beb = iterator.next();
 
@@ -88,10 +89,12 @@ public class BebetePredator extends BebeteAvecComportement {
                     list.put(caution, beb);
                 }
             }
+
             /*  on recupere la bebete qui à le plus grand caution
                 plus grand caution ça veut dire celle qui posséde la grand rapport (rapprochement/Taille d'enérgie)
              */
             target = list.lastEntry().getValue();
+            System.out.println("Target Detecter ===========================================");
 
         }
 
@@ -116,13 +119,35 @@ public class BebetePredator extends BebeteAvecComportement {
     public Bebete getTarget() {
         return target;
     }
-
+    private int framCounter = 0;
     @Override
     public void seDessine(Graphics g) {
         // a refaire
         int CDVDegres = (int) Math.toDegrees(champDeVue);
-        g.setColor(new Color(255,0,0,0.2f));
-        g.fillOval(x,y,TAILLEGRAPHIQUE,TAILLEGRAPHIQUE);
+        g.setColor(new Color(1, 0, 0, 0.3f));
+        if (framCounter > 50) {
+            //g.drawOval(x+(TAILLEGRAPHIQUE/4),y+(TAILLEGRAPHIQUE/4),TAILLEGRAPHIQUE/2,TAILLEGRAPHIQUE/2);
+
+        } else {
+            g.drawArc(x - (TAILLEGRAPHIQUE / 4), y - (TAILLEGRAPHIQUE / 4), TAILLEGRAPHIQUE + (TAILLEGRAPHIQUE / 2), TAILLEGRAPHIQUE + (TAILLEGRAPHIQUE / 2),
+                    -(int) Math.toDegrees(directionCourante) - (CDVDegres / 2),
+                    CDVDegres);
+        }
+
+        framCounter++;
+        if (framCounter > 100) {
+            framCounter = 0;
+        }
+        if (energie < 20) {
+            if (energie > 0) {
+                g.setColor(new Color(0.9f, 0, 0.0f, 0.5f));
+            } else {
+                g.setColor(new Color(0.5f,0.5f,0.5F,0.5f));
+            }
+        } else {
+            g.setColor(new Color(0.0f, 0.9f, 0.0f, 0.5f));
+        }
+        g.drawString(""+energie, x, y - 10);
         g.setColor(couleur);
         g.fillArc(x, y, TAILLEGRAPHIQUE, TAILLEGRAPHIQUE,
                 -(int) Math.toDegrees(directionCourante) - (CDVDegres / 2),
@@ -166,41 +191,10 @@ public class BebetePredator extends BebeteAvecComportement {
         }
 
 
-        private int framCounter = 0;
 
 
-        public void seDessine(Graphics g) {
-            // a refaire
-            int CDVDegres = (int) Math.toDegrees(champDeVue);
-            g.setColor(new Color(1, 0, 0, 0.3f));
-            if (framCounter > 50) {
-                //g.drawOval(x+(TAILLEGRAPHIQUE/4),y+(TAILLEGRAPHIQUE/4),TAILLEGRAPHIQUE/2,TAILLEGRAPHIQUE/2);
 
-            } else {
-                g.drawArc(x - (TAILLEGRAPHIQUE / 4), y - (TAILLEGRAPHIQUE / 4), TAILLEGRAPHIQUE + (TAILLEGRAPHIQUE / 2), TAILLEGRAPHIQUE + (TAILLEGRAPHIQUE / 2),
-                        -(int) Math.toDegrees(directionCourante) - (CDVDegres / 2),
-                        CDVDegres);
-            }
 
-            framCounter++;
-            if (framCounter > 100) {
-                framCounter = 0;
-            }
-            if (energie < 20) {
-                if (energie > 0) {
-                    g.setColor(new Color(0.9f, 0, 0.0f, 0.5f));
-                } else {
-                    g.setColor(new Color(0.5f,0.5f,0.5F,0.5f));
-                }
-            } else {
-                g.setColor(new Color(0.0f, 0.9f, 0.0f, 0.5f));
-            }
-            g.drawString(""+energie, x, y - 10);
-            g.setColor(couleur);
-            g.fillArc(x, y, TAILLEGRAPHIQUE, TAILLEGRAPHIQUE,
-                    -(int) Math.toDegrees(directionCourante) - (CDVDegres / 2),
-                    CDVDegres);
-        }
     }
 
 }

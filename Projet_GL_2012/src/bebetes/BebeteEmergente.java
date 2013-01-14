@@ -15,6 +15,8 @@ import visu.Positionnable;
 public class BebeteEmergente extends BebeteAvecComportement {
 
 
+    private static final int MINIMUM_ENERDY_FOR_PREDATOR = 20;
+
     public BebeteEmergente(ChampDeBebetes c, int x, int y,
                            float dC, float vC, Color col) {
         super(c, x, y, dC, vC, col);
@@ -57,6 +59,9 @@ public class BebeteEmergente extends BebeteAvecComportement {
         List<? extends Dirigeable> betesVues = filtreDirigeables(getChosesVues());
         if (betesVues.size() < BEAUCOUP) {
             energie--;
+        }
+        if(getEnergie()< MINIMUM_ENERDY_FOR_PREDATOR){
+            setPendingState(BebetePredator.class);
         }
         if (energie <= 0) setDead(true);
 

@@ -219,16 +219,10 @@ public class TestPluginsBebetes extends JFrame {
 		if(ClassName.equals("BebeteHasard")){
 			for (Bebete bet : champ.getListeBebete()) {
                 bet.setPendingState(BebeteHasard.class);
-                //bet = new Bebete(new BebeteHasard(bet.getCurrentState()));
-                logger.info("Bebete Hasard Cree");
-				//bet.setDeplacement(new DeplacementHasard());
 			}
 		}else{
 			for (Bebete bet : champ.getListeBebete()) {
                 bet.setPendingState(BebeteEmergente.class);
-                //bet = new Bebete(new BebeteEmergente(bet.getCurrentState()));
-                logger.info("Bebete Emergente Cree");
-				//bet.setDeplacement(new DeplacementEmergent());
 			}
 		}
 	}

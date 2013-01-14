@@ -13,8 +13,9 @@ import comportement.DeplacementHasard;
 public class BebeteHasard extends BebeteAvecComportement {
 
 
+    private static final int MINIMUM_ENERDY_FOR_PREDATOR = 20;
 
-	public BebeteHasard(ChampDeBebetes c, int x, int y, float dC, float vC, Color col) {
+    public BebeteHasard(ChampDeBebetes c, int x, int y, float dC, float vC, Color col) {
 		super(c, x, y, dC, vC, col);
         energie = 50;
         move=new DeplacementHasard();
@@ -38,7 +39,11 @@ public class BebeteHasard extends BebeteAvecComportement {
 		else {
 			energie++;
 		}
-		//if(energie <= 0) setDead(true);
+        if(getEnergie()< MINIMUM_ENERDY_FOR_PREDATOR){
+            setPendingState(BebetePredator.class);
+            System.out.println("PREDATOR CREER===========================================================");
+        }
+		if(energie <= 0) setDead(true);
 	}
 
 
@@ -48,10 +53,25 @@ public class BebeteHasard extends BebeteAvecComportement {
 		nbTour = 0;
 	}
 
+    private int framCounter = 0;
     @Override
     public void seDessine(Graphics g) {
         // a refaire
         int CDVDegres = (int) Math.toDegrees(champDeVue);
+        framCounter++;
+        if (framCounter > 100) {
+            framCounter = 0;
+        }
+        if (energie < 20) {
+            if (energie > 0) {
+                g.setColor(new Color(0.9f, 0, 0.0f, 0.5f));
+            } else {
+                g.setColor(new Color(0.5f,0.5f,0.5F,0.5f));
+            }
+        } else {
+            g.setColor(new Color(0.0f, 0.9f, 0.0f, 0.5f));
+        }
+        g.drawString(""+energie, x, y - 10);
         g.setColor(couleur);
         g.fillArc(x, y, TAILLEGRAPHIQUE, TAILLEGRAPHIQUE,
                 -(int) Math.toDegrees(directionCourante) - (CDVDegres / 2),
